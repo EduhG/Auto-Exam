@@ -420,7 +420,7 @@ Column Items with Description
 
 .signup .twitter {
     width: 100%;
-    border-radius: none;
+    border-radius: 0;
 }
 
 .signup-footer {
