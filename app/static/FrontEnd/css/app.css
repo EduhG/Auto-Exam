@@ -1,0 +1,489 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+@import 'https://fonts.googleapis.com/css?family=Raleway';
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+/*=============================================================
+
+Page Defaults
+
+=============================================================*/
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: #eee;
+    font-family: 'Raleway', Arial, sans-serif;
+    overflow-x: hidden;
+    /*    overflow: hidden;*/
+}
+
+
+/*=============================================================
+
+Typography
+
+=============================================================*/
+
+* {
+    color: #542;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 480px) {
+    html,
+    body {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 1000px) {
+    html,
+    body {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    html,
+    body {
+        font-size: 16px;
+    }
+}
+
+
+/*=============================================================
+
+Custom Grid
+
+=============================================================*/
+
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.row {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+    border: 0px solid red;
+}
+
+@media only screen and (max-width: 480px) {
+    /* For Phones: */
+    .col-s-1 {
+        width: 8.33%;
+    }
+    .col-s-2 {
+        width: 16.66%;
+    }
+    .col-s-3 {
+        width: 25%;
+    }
+    .col-s-4 {
+        width: 33.33%;
+    }
+    .col-s-5 {
+        width: 41.66%;
+    }
+    .col-s-6 {
+        width: 50%;
+    }
+    .col-s-7 {
+        width: 58.33%;
+    }
+    .col-s-8 {
+        width: 66.66%;
+    }
+    .col-s-9 {
+        width: 75%;
+    }
+    .col-s-10 {
+        width: 83.33%;
+    }
+    .col-s-11 {
+        width: 91.66%;
+    }
+    .col-s-12 {
+        width: 100%;
+    }
+    [class*="col-m"] {
+        background: transparent;
+        border: 0px solid black;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 1024px) {
+    /* For tablets: */
+    .col-m-1 {
+        width: 8.33%;
+    }
+    .col-m-2 {
+        width: 16.66%;
+    }
+    .col-m-3 {
+        width: 25%;
+    }
+    .col-m-4 {
+        width: 33.33%;
+    }
+    .col-m-5 {
+        width: 41.66%;
+    }
+    .col-m-6 {
+        width: 50%;
+    }
+    .col-m-7 {
+        width: 58.33%;
+    }
+    .col-m-8 {
+        width: 66.66%;
+    }
+    .col-m-9 {
+        width: 75%;
+    }
+    .col-m-10 {
+        width: 83.33%;
+    }
+    .col-m-11 {
+        width: 91.66%;
+    }
+    .col-m-12 {
+        width: 100%;
+    }
+    [class*="col-m"] {
+        background: transparent;
+        border: 0px solid black;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    /* For Desktops: */
+    .col-1 {
+        width: 8.33%;
+    }
+    .col-2 {
+        width: 16.66%;
+    }
+    .col-3 {
+        width: 25%;
+    }
+    .col-4 {
+        width: 33.33%;
+    }
+    .col-5 {
+        width: 41.66%;
+    }
+    .col-6 {
+        width: 50%;
+    }
+    .col-7 {
+        width: 58.33%;
+    }
+    .col-8 {
+        width: 66.66%;
+    }
+    .col-9 {
+        width: 75%;
+    }
+    .col-10 {
+        width: 83.33%;
+    }
+    .col-11 {
+        width: 91.66%;
+    }
+    .col-12 {
+        width: 100%;
+    }
+    [class*="col-"] {
+        display: block;
+        background: transparent;
+        border: 0px solid black;
+    }
+}
+
+
+/*=============================================================
+
+Images
+
+=============================================================*/
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 50%;
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.responsive-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+/*=============================================================
+
+Column Items with Description
+
+=============================================================*/
+
+.item-container {
+    background: #fff;
+}
+
+.item-container:hover {
+    background: #eee;
+    cursor: pointer;
+}
+
+.item-description > p {
+    padding: 5px 5px;
+    margin: 0;
+    font-size: 100%;
+}
+
+.item-details {
+    padding: 0px;
+    background: #fff;
+}
+
+.item-description {
+    position: relative;
+    overflow: hidden;
+    height: auto;
+    padding: 5px;
+}
+
+.vertical-align-content {
+    display: flex;
+    justify-content: center;
+    /*    align-items: center;*/
+    color: #fff;
+    flex-direction: column;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-center {
+    text-align: center;
+}
+
+#body-wrapper > .row {
+    max-width: 100%
+}
+
+.header {
+    height: 70px;
+    z-index: 99999;
+    position: relative
+}
+
+.header > .row {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.header-nav,
+.logo {
+    height: 100%;
+}
+
+.logo {
+    font-size: 40px;
+    padding-left: 30px;
+}
+
+.header-nav nav {
+    height: 100%;
+    padding-top: 2px;
+    text-align: right;
+}
+
+.header-nav ul {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.header-nav li {
+    display: inline-block;
+    padding: 5px 20px;
+    color: #fff;
+    height: 100%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.landing-bg {
+    /*    height: calc(100vh - 70px);*/
+    height: 100vh;
+    position: relative;
+    background: url(../images/ball-457334_1280.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    top: -70px;
+}
+
+.landing-container {
+    background: rgba(0, 0, 0, 0.2);
+    height: 100%;
+    position: relative;
+}
+
+.landing-content {
+    height: calc(100vh - 70px);
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    /*    height: 100%;*/
+}
+
+.landing-content h1 {
+    font-size: 70px;
+}
+
+.signup {
+    width: 700px;
+    margin: auto;
+    text-align: justify;
+    background: #FFF;
+}
+
+.signup > .row {
+    padding: 0;
+    margin: 0;
+}
+
+.signup-form {
+    padding: 0;
+    margin: 0;
+}
+
+.signup button {
+    width: 100%;
+    border-radius: 0px;
+    margin: 0;
+}
+
+.signup .success {
+    margin-top: 10px;
+}
+
+.signup .facebook,
+.signup .google,
+.signup .twitter {
+    margin: 5px 0;
+}
+
+.signup .facebook {
+    background: #37538D;
+    margin-top: 0;
+}
+
+.signup .google {
+    background: #D73D32;
+}
+
+.signup .twitter {
+    width: 100%;
+    border-radius: none;
+}
+
+.signup-footer {
+    background: #F7F7F7;
+}
+
+.signup-header {
+    background: #F7F7F7;
+    padding-bottom: 0px;
+}
+
+.signup-header h3 {
+    background: #F7F7F7;
+    padding: 0;
+    margin: 0;
+}
+
+.signup-header .col-12 {
+    background: #F7F7F7;
+    padding: 10px 15px;
+}
+
+.signup-footer p {
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+}
+
+.main-content {
+    padding: 20px 0px;
+}
+
+.features-heading {
+    padding: 0;
+}
+
+.main-content h3 {
+    padding-bottom: 0px;
+    font-size: 60px;
+    margin: 0;
+    background: #1d1d1d;
+    color: #fff;
+    padding: 30px;
+}
+
+.main-content > .row {
+    margin: 0;
+}
+
+.features,
+.respo {
+    padding: 20px 150px;
+}
+
+.respo {
+    padding-bottom: 50px
+}
+
+.respo p {
+    font-size: 65px
+}
+
+.footer {
+    height: 200px;
+    background: #1d1d1d;
+}
