@@ -1,0 +1,12 @@
+#body-wrapper > .row {
+    max-width: 100%
+}
+
+.landing-container {
+    height: 100vh;
+    position: relative;
+    background: url(../images/kilimanjaro-1025146_1920.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
