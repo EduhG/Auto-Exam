@@ -388,9 +388,65 @@ Column Items with Description
     margin: 0;
 }
 
+.signup-form {
+    padding: 0;
+    margin: 0;
+}
+
 .signup button {
     width: 100%;
+    border-radius: 0px;
+    margin: 0;
+}
+
+.signup .success {
+    margin-top: 10px;
+}
+
+.signup .facebook,
+.signup .google,
+.signup .twitter {
+    margin: 5px 0;
+}
+
+.signup .facebook {
+    background: #37538D;
+    margin-top: 0;
+}
+
+.signup .google {
+    background: #D73D32;
+}
+
+.signup .twitter {
+    width: 100%;
     border-radius: none;
+}
+
+.signup-footer {
+    background: #F7F7F7;
+}
+
+.signup-header {
+    background: #F7F7F7;
+    padding-bottom: 0px;
+}
+
+.signup-header h3 {
+    background: #F7F7F7;
+    padding: 0;
+    margin: 0;
+}
+
+.signup-header .col-12 {
+    background: #F7F7F7;
+    padding: 10px 15px;
+}
+
+.signup-footer p {
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
 }
 
 .footer {
