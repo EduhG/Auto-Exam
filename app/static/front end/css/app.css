@@ -608,6 +608,13 @@ body {
     border: none;
 }
 
+.registration {
+    width: 80%;
+    margin: auto;
+    background: #fff;
+    margin-top: 30px
+}
+
 .registration .input-group {
     padding: 0;
     margin: 0;
@@ -619,5 +626,24 @@ legend {
 }
 
 select {
+    margin: 0;
+}
+
+.form-header {
+    padding-bottom: 0px;
+}
+
+.form-header h5 {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.form-footer {
+    background: #ddd;
+    text-align: right;
+    background: #3C3C3C;
+}
+
+.form-footer button {
     margin: 0;
 }
