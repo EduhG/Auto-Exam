@@ -6,3 +6,20 @@ autoExam_blueprint = Blueprint('autoExam', __name__)
 @autoExam_blueprint.route('/autoexam')
 def index():
     return render_template('autoExam/index.html')
+
+
+@autoExam_blueprint.route('/autoexam/addStudent')
+def addstudent():
+    return render_template('autoExam/newstudent.html')
+
+
+@autoExam_blueprint.route('/autoexam/enterMarks')
+def entermarks():
+    return render_template('autoExam/entermarks.html')
+
+
+@autoExam_blueprint.route('/autoexam/reports')
+def reports():
+    return render_template('autoExam/index.html')
+
+
