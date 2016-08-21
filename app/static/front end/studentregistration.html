@@ -67,20 +67,88 @@
                 <div class="registration">
                     <form action="">
                         <div class="row">
-                            <div class="col-7"></div>
-                            <div class="col-5">
+                            <div class="col-6"></div>
+                            <div class="col-6">
                                 <div class="input-group">
-                                    <span class="input-group-label">Registration No.</span>
-                                    <input class="input-group-field" type="number">
+                                    <label>Reg Date:
+                                        <input type="text" placeholder="Reg Date" aria-describedby="regDateHelpText">
+                                    </label>
+                                    <p class="help-text" id="regDateHelpText"></p>
                                 </div>
 
                                 <div class="input-group">
-                                    <span class="input-group-label">Registration No.</span>
-                                    <input class="input-group-field" type="number">
+                                    <label>Reg Number:
+                                        <input type="text" placeholder="Reg Number" aria-describedby="regNoHelpText">
+                                    </label>
+                                    <p class="help-text" id="regNoHelpText"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label>First Name:
+                                        <input type="text" placeholder="First Name" aria-describedby="firstNameHelpText">
+                                    </label>
+                                    <p class="help-text" id="firstNameHelpText"></p>
+                                </div>
+
+                                <div class="input-group">
+                                    <label>Middle Name:
+                                        <input type="text" placeholder="Middle Name" aria-describedby="middleNameHelpText">
+                                    </label>
+                                    <p class="help-text" id="middleNameHelpText"></p>
+                                </div>
+
+                                <div class="input-group">
+                                    <label>Last Name:
+                                        <input type="text" placeholder="Last Name" aria-describedby="lastNameHelpText">
+                                    </label>
+                                    <p class="help-text" id="lastNameHelpText"></p>
+                                </div>
+
+                                <div class="input-group">
+                                    <fieldset class="">
+                                        <label for="">Gender:</label>
+                                        <input type="radio" name="male" value="Red" id="male" style="margin-right:5px">Male
+                                        <input type="radio" name="male" value="Red" id="male" style="margin-right:5px; margin-left:50px;"> Female
+                                    </fieldset>
+                                    <p class="help-text" id="genderHelpText"></p>
                                 </div>
                             </div>
 
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label>Class / Form:
+                                        <select>
+                                            <option value="form1">Form 1</option>
+                                            <option value="form2">Form 2</option>
+                                            <option value="form3">Form 3</option>
+                                            <option value="form4">Form 4</option>
+                                        </select>
+                                    </label>
+                                    <p class="help-text" id="firstNameHelpText"></p>
+                                </div>
 
+                                <div class="input-group">
+                                    <label>Stream:
+                                        <select>
+                                            <option value="streama">Block A</option>
+                                            <option value="streama">Block B</option>
+                                            <option value="streama">Block C</option>
+                                        </select>
+                                    </label>
+                                    <p class="help-text" id="middleNameHelpText"></p>
+                                </div>
+
+                                <div class="input-group">
+                                    <label>Admission Marks:
+                                        <input type="text" placeholder="Last Name" aria-describedby="lastNameHelpText">
+                                    </label>
+                                    <p class="help-text" id="lastNameHelpText"></p>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
