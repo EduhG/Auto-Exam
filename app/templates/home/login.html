@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="signup">
+        <div class="row signup-header">
+            <div class="col-12">
+                <h3>Log in</h3>
+            </div>
+        </div>
+        <div class="row signup-form">
+            <div class="col-7 col-m-7 col-s-12">
+                <form action="POST">
+                    <label>
+                        <input type="text" placeholder="Username or Email" aria-describedby="usernameHelpText">
+                    </label>
+                    <p class="help-text" id="usernameHelpText"></p>
+
+                    <label>
+                        <input type="password" placeholder="Password" aria-describedby="passwordHelpText">
+                    </label>
+                    <p class="help-text" id="passwordHelpText"></p>
+
+                    <button type="button" class="success button">Log in</button>
+                </form>
+            </div>
+            <div class="col-5 col-m-5 col-s-12">
+                <button type="button" class="facebook button">Facebook</button>
+                <button type="button" class="google button">Google +</button>
+                <button type="button" class="twitter button">Twitter</button>
+            </div>
+        </div>
+
+        <div class="row signup-footer">
+            <div class="col-12">
+                <p><a href="">Sign up</a></p>
+                <p><a href="">Reset Your Password</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
