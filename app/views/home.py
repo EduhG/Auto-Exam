@@ -10,10 +10,14 @@ def index():
 
 @home_blueprint.route('/login')
 def login():
-    print 'user loging in'
     return render_template('home/login.html')
 
 
 @home_blueprint.route('/signup')
 def signup():
     return render_template('home/signup.html')
+
+
+@home_blueprint.route('/logout')
+def logout():
+    return render_template('home/index.html')
