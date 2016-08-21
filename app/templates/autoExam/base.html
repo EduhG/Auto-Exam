@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+    <div id="body-wrapper">
+        <header class="header">
+            <div class="logo vertical-align-content align-center">
+                ExamAuto
+            </div>
+
+            <div class="header-nav">
+                <div class="profile-notifications vertical-align-content">
+                    <nav class="" style="padding-top: 7px">
+                        <ul class="vertical-align-content">
+                            <li class="vertical-align-content">
+                                <a class="" href="#"><i class="fa fa-user-plus"></i>Profile</a>
+                            </li>
+                            <li>
+                                <a class="" href="#"><i class="fa fa-envelope"></i>Messages</a>
+                            </li>
+                            <li>
+                                <a class="" href="#"><i class="fa fa-cogs"></i>Settings</a>
+                            </li>
+                            <li>
+                                <a class="" href="#"><i class="fa fa-sign-out"></i>Logout</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+
+        </header>
+
+        <div id="container">
+            <div id="sidebar">
+                <nav>
+                    <ul class="">
+                        <li class="border-bottom border-top"><a class="" href="#"><i class="ion-ios-home"></i></a>Dashboard</li>
+                        <li class="border-bottom border-top"><a class="" href="#"><i class="ion-person-add"></i></a>Student Registration</li>
+                        <li class="border-bottom border-top"><a class="" href="#"><i class="ion-ios-compose"></i></a>Exam Management</li>
+                        <li class="border-bottom border-top"><a class="" href="#"><i class="ion-ios-paper"></i></a>Reports</li>
+                    </ul>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="switch">
+                        <i class="fa fa-arrow-circle-o-left"></i>
+                        <!--<i class="ion-arrow-expand"></i>-->
+                    </div>
+                </div>
+            </div>
+            <div id="content">
+                {% block content1 %}{% endblock %}
+            </div>
+        </div>
+
+        <footer id="footer" class="vertical-align-content">
+            <div class="row">
+                <div class="col-6 col-m-6 col-s-12">
+                    Auto Exam 1.0 - Web Application <i></i> 2016 - 2017
+                </div>
+                <div class="col-6 col-m-6 col-s-12">
+                    <i>You are logged in as a standard user</i>
+                </div>
+            </div>
+        </footer>
+    </div>
+{% endblock %}

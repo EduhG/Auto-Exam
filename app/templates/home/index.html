@@ -1,13 +1,14 @@
-{% extends "layout.html" %}
-{% block content %}
+{% extends "home/base.html" %}
+{% block content1 %}
     <h1>And</h1>
     <h1>Discover Amazing Places</h1>
 {% endblock %}
 
+{% block content2 %}
 <div class="row main-content">
     <div class="row respo">
         <div class="col-6 col-m-6 col-s-12">
-            <img src="images/library-150367_1280.png" alt="">
+            <img class="" src="{{ url_for('static', filename = 'images/library-150367_1280.png') }}" alt="">
         </div>
         <div class="col-6 col-m-6 col-s-12 vertical-align-content align-center">
             <p>Get rid of paper work and Simplify your World</p>
@@ -45,3 +46,5 @@
 <div class="row footer">
     footer
 </div>
+
+{% endblock %}

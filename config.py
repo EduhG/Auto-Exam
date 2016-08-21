@@ -1,3 +1,6 @@
+import os
+
+
 class BaseConfig(object):
     DEBUG = False
     SECRET_KEY = 'yiwj\xfa\xe0\x18\xe7\xde\xa1\x8b#\x9e\xdbyXqC\x9e\xcdK\xcaz8'

@@ -8,11 +8,12 @@ def index():
     return render_template('home/index.html')
 
 
-@home_blueprint.route('/home/login')
+@home_blueprint.route('/login')
 def login():
+    print 'user loging in'
     return render_template('home/login.html')
 
 
-@home_blueprint.route('/home/signup')
+@home_blueprint.route('/signup')
 def signup():
     return render_template('home/signup.html')
