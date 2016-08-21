@@ -1,4 +1,49 @@
 {% extends "layout.html" %}
 {% block content %}
+    <div class="signup">
+        <div class="row signup-header">
+            <div class="col-12">
+                <h3>Sign Up</h3>
+            </div>
+        </div>
+        <div class="row signup-form">
+            <div class="col-7 col-m-7 col-s-12">
+                <form action="POST">
+                    <label>
+                        <input type="text" placeholder="Username" aria-describedby="usernameHelpText">
+                    </label>
+                    <p class="help-text" id="usernameHelpText"></p>
 
+                    <label>
+                        <input type="text" placeholder="Email Address" aria-describedby="emailHelpText">
+                    </label>
+                    <p class="help-text" id="emailHelpText"></p>
+
+                    <label>
+                        <input type="password" placeholder="Password" aria-describedby="passwordHelpText">
+                    </label>
+                    <p class="help-text" id="passwordHelpText">Passwords must have at least 8 characters and a number.</p>
+
+                    <label>
+                        <input type="password" placeholder="Re-Enter Password" aria-describedby="passwordAgainHelpText">
+                    </label>
+                    <p class="help-text" id="passwordAgainHelpText"></p>
+
+                    <button type="button" class="success button">Sign Up</button>
+                </form>
+            </div>
+            <div class="col-5 col-m-5 col-s-12">
+                <button type="button" class="facebook button">Facebook</button>
+                <button type="button" class="google button">Google +</button>
+                <button type="button" class="twitter button">Twitter</button>
+            </div>
+        </div>
+
+        <div class="row signup-footer">
+            <div class="col-12">
+                <p><a href="">Already Have an Account?</a></p>
+                <p>Bu Signing up you agree to our <a href="">Terms</a></p>
+            </div>
+        </div>
+    </div>
 {% endblock %}
