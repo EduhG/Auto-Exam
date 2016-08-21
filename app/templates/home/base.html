@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+    <div id="body-wrapper" class="body-wrapper">
+        <div class="header">
+            <div class="row">
+                <div class="logo col-6 col-m-6 col-s-6 vertical-align-content">
+                    Explore Kenya
+                </div>
+                <div class="header-nav col-6 col-m-6 col-s-6 vertical-align-content">
+                    <nav class="">
+                        <ul>
+                            <li>
+                                <a href=""></a>Features</li>
+                            <li>
+                                <a href=""></a>Sign up</li>
+                            <li>
+                                <a href=""></a>Log in</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="row landing-bg">
+            <div class="landing-container">
+                <div class="landing-content vertical-align-content align-center">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
