@@ -1,5 +1,8 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from config import config
+
+db = SQLAlchemy()
 
 
 def create_app(config_name):
@@ -14,15 +17,3 @@ def create_app(config_name):
     app.register_blueprint(autoExam_blueprint)
 
     return app
-
-
-'''
-from flask import Flask
-from .views.home import home_blueprint
-from .views.autoExam import autoExam_blueprint
-
-app = Flask(__name__)
-
-app.register_blueprint(home_blueprint)
-app.register_blueprint(autoExam_blueprint)
-'''
