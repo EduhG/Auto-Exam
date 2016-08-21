@@ -304,13 +304,58 @@ Column Items with Description
     max-width: 100%
 }
 
+.header {
+    height: 70px;
+    z-index: 99999;
+    position: relative
+}
+
+.header > .row {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.header-nav,
+.logo {
+    height: 100%;
+}
+
+.logo {
+    font-size: 40px;
+    padding-left: 30px;
+}
+
+.header-nav nav {
+    height: 100%;
+    padding-top: 2px;
+    text-align: right;
+}
+
+.header-nav ul {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.header-nav li {
+    display: inline-block;
+    padding: 5px 20px;
+    color: #fff;
+    height: 100%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
 .landing-bg {
+    /*    height: calc(100vh - 70px);*/
     height: 100vh;
     position: relative;
     background: url(../images/kilimanjaro-1025146_1920.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    top: -70px;
 }
 
 .landing-container {
@@ -319,15 +364,36 @@ Column Items with Description
     position: relative;
 }
 
-.header {
-    height: 70px;
-}
-
 .landing-content {
     height: calc(100vh - 70px);
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    /*    height: 100%;*/
+}
+
+.landing-content h1 {
+    font-size: 70px;
+}
+
+.signup {
+    width: 700px;
+    margin: auto;
+    text-align: justify;
+    background: #FFF;
+}
+
+.signup > .row {
+    padding: 0;
+    margin: 0;
+}
+
+.signup button {
+    width: 100%;
+    border-radius: none;
 }
 
 .footer {
     height: 200px;
-    background: #000;
+    background: #1d1d1d;
 }
