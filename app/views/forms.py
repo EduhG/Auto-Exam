@@ -1,4 +1,5 @@
 from flask_wtf import Form
+from sqlalchemy import or_
 from wtforms import SubmitField, validators, ValidationError, PasswordField, StringField, RadioField
 from app.models import Student, User, Marks
 
@@ -37,6 +38,29 @@ class SignupForm(Form):
             return False
         else:
             return True
+
+
+class SigninForm(Form):
+    loginid = StringField("Email", [validators.DataRequired("Please enter your login id.")],
+                          render_kw={"placeholder": "Username or Email"})
+    password = PasswordField('Password', [validators.DataRequired("Please enter a password.")],
+                             render_kw={"placeholder": "Password"})
+    submit = SubmitField("Sign In")
+
+    def __init__(self, *args, **kwargs):
+        Form.__init__(self, *args, **kwargs)
+
+    def validate(self):
+        if not Form.validate(self):
+            return False
+
+        # user = User.query.filter_by(email=self.email.data.lower() or_ email=self.email.data.lower()).first()
+        user = User.query.filter_by(or_(email=self.loginid.data.lower(), username=self.loginid.data))
+        if user and user.check_password(self.password.data):
+            return True
+        else:
+            self.email.errors.append("Invalid e-mail or password")
+            return False
 
 
 class NewStudent(Form):

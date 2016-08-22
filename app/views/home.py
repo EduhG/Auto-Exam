@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, session, url_for, redirect
-from forms import SignupForm
+from forms import SignupForm, SigninForm
 from app.models import User
 from app import db
 
@@ -14,7 +14,22 @@ def index():
 
 @home_blueprint.route('/login')
 def login():
-    return render_template('home/login.html')
+    form = SigninForm()
+
+    if 'email' in session:
+        return redirect(url_for('profile'))
+
+    if request.method == 'POST':
+        if form.validate() is False:
+            return render_template('signin.html', form=form)
+        else:
+            session['email'] = form.email.data
+            return redirect(url_for('profile'))
+
+    elif request.method == 'GET':
+        return render_template('signin.html', form=form)
+
+    # return render_template('home/login.html')
 
 
 @home_blueprint.route('/signup', methods=['GET', 'POST'])
