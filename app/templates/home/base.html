@@ -7,12 +7,20 @@
                     Auto Exam
                 </div>
                 <div class="header-nav col-6 col-m-6 col-s-6 vertical-align-content">
-                    <nav class="">
+                    <nav class="navigation">
                         <ul>
                             <li><a href="{{ url_for('.index') }}">Home</a></li>
-                            <li><a href="#features">About</a></li>
+                            <li class="has-submenu">
+                                <a href="#">Explore</a>
+                                <ul class="submenu-menu">
+                                    <li><a href="#features">About</a></li>
+                                    <li><a href="#features">Features</a></li>
+                                    <li><a href="#features">Contact Us</a></li>
+                                </ul>
+                            </li>
+                            <!--<li><a href="#features">About</a></li>
                             <li><a href="#features">Features</a></li>
-                            <li><a href="#features">Contact Us</a></li>
+                            <li><a href="#features">Contact Us</a></li>-->
                             {% if 'loginid' in session %}
                                 <li><a href="{{ url_for('autoExam.index') }}">Dashboard</a></li>
                                 <li><a href="{{ url_for('.logout') }}">Sign Out</a></li>
