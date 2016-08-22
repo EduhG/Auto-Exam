@@ -56,7 +56,7 @@ class SigninForm(Form):
 
         user_email = User.query.filter_by(email=self.loginid.data.lower()).first()
         user_name = User.query.filter_by(username=self.loginid.data).first()
-        # user = User.query.filter_by(or_(loginid=self.loginid.data.lower(), username=self.loginid.data))
+        # user = User.query.filter_by(or_(email=self.loginid.data.lower(), username=self.loginid.data)).first()
         if (user_email and user_email.check_password(self.password.data)) or \
                 (user_name and user_name.check_password(self.password.data)):
             return True

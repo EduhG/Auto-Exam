@@ -59,4 +59,8 @@ def signup():
 
 @home_blueprint.route('/logout')
 def logout():
-    return render_template('home/index.html')
+    if 'loginid' not in session:
+        return redirect(url_for('home.login'))
+
+    session.pop('loginid', None)
+    return redirect(url_for('home.index'))
