@@ -12,22 +12,22 @@ def index():
     return render_template('home/index.html')
 
 
-@home_blueprint.route('/login')
+@home_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
     form = SigninForm()
 
-    if 'email' in session:
-        return redirect(url_for('profile'))
+    if 'loginid' in session:
+        return redirect(url_for('autoExam.index'))
 
     if request.method == 'POST':
         if form.validate() is False:
-            return render_template('signin.html', form=form)
+            return render_template('home/login.html', form=form)
         else:
-            session['email'] = form.email.data
-            return redirect(url_for('profile'))
+            session['loginid'] = form.email.data
+            return redirect(url_for('autoExam.index'))
 
     elif request.method == 'GET':
-        return render_template('signin.html', form=form)
+        return render_template('home/login.html', form=form)
 
     # return render_template('home/login.html')
 
@@ -47,8 +47,8 @@ def signup():
             db.session.add(newuser)
             db.session.commit()
 
+            session['loginid'] = newuser.username
             session['email'] = newuser.email
-            session['username'] = newuser.username
 
             return redirect(url_for('autoExam.index'))
 
