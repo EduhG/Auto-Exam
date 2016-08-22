@@ -385,7 +385,12 @@ body {
 
 .header-nav li a {
     color: #fff;
-    font-size: 14px
+    font-size: 13px
+}
+
+.header-nav li:hover a {
+    color: #ddd;
+    font-size: 13px
 }
 
 .header-nav li a i {
@@ -429,6 +434,14 @@ body {
     margin: 0;
     color: #fff;
     cursor: pointer;
+}
+
+#sidebar > nav ul li a {
+    color: #fff;
+}
+
+#sidebar > nav ul li:hover {
+    background: #000;
 }
 
 #sidebar > nav ul li a i {
