@@ -8,7 +8,7 @@
         </div>
         <div class="row signup-form">
             <div class="col-7 col-m-7 col-s-12">
-                <form action="POST">
+                <!--<form action="POST">
                     <label>
                         <input type="text" placeholder="Username" aria-describedby="usernameHelpText">
                     </label>
@@ -30,6 +30,41 @@
                     <p class="help-text" id="passwordAgainHelpText"></p>
 
                     <button type="button" class="success button">Sign Up</button>
+                </form>-->
+
+                <form action="" method=post>
+                    {{ form.hidden_tag() }}
+
+                    <label>
+                        {{ form.username( **{'aria-describedby':"usernameHelpText"} ) }}
+                    </label>
+                    {% for message in form.username.errors %}
+                        <p class="help-text, error" id="usernameHelpText">{{ message }}</p>
+                    {% endfor %}
+
+                    <label>
+                        {{ form.email( **{'aria-describedby':"emailHelpText"} ) }}
+                    </label>
+                    {% for message in form.email.errors %}
+                        <p class="help-text" id="emailHelpText">{{ message }}</p>
+                    {% endfor %}
+
+                    <label>
+                        {{ form.password( **{'aria-describedby':"passwordHelpText"} ) }}
+                    </label>
+                    {% for message in form.password.errors %}
+                        <p class="help-text" id="passwordHelpText">{{ message }}</p>
+                    {% endfor %}
+
+                    <label>
+                        {{ form.passwordAgain( **{'aria-describedby':"passwordAgainHelpText"} ) }}
+                    </label>
+                    {% for message in form.passwordAgain.errors %}
+                        <p class="help-text" id="passwordAgainHelpText">{{ message }}</p>
+                    {% endfor %}
+
+                    {{ form.submit(class_="success button submit") }}
+
                 </form>
             </div>
             <div class="col-5 col-m-5 col-s-12">

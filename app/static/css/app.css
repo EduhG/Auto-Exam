@@ -407,7 +407,7 @@ Column Items with Description
     margin: 0;
 }
 
-.signup button {
+.signup button, .signup .submit {
     width: 100%;
     border-radius: 0px;
     margin: 0;

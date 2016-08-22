@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from forms import Student, Marks
 
 autoExam_blueprint = Blueprint('autoExam', __name__)
 
