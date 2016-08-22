@@ -54,12 +54,14 @@ class SigninForm(Form):
         if not Form.validate(self):
             return False
 
-        # user = User.query.filter_by(email=self.email.data.lower() or_ email=self.email.data.lower()).first()
-        user = User.query.filter_by(or_(email=self.loginid.data.lower(), username=self.loginid.data))
-        if user and user.check_password(self.password.data):
+        user_email = User.query.filter_by(email=self.loginid.data.lower()).first()
+        user_name = User.query.filter_by(username=self.loginid.data).first()
+        # user = User.query.filter_by(or_(loginid=self.loginid.data.lower(), username=self.loginid.data))
+        if (user_email and user_email.check_password(self.password.data)) or \
+                (user_name and user_name.check_password(self.password.data)):
             return True
         else:
-            self.email.errors.append("Invalid e-mail or password")
+            self.loginid.errors.append("Invalid e-mail or password")
             return False
 
 

@@ -8,7 +8,7 @@
         </div>
         <div class="row signup-form">
             <div class="col-7 col-m-7 col-s-12">
-                <form action="POST">
+                <!--<form action="POST">
                     <label>
                         <input type="text" placeholder="Username or Email" aria-describedby="usernameHelpText">
                     </label>
@@ -20,6 +20,24 @@
                     <p class="help-text" id="passwordHelpText"></p>
 
                     <button type="button" class="success button">Log in</button>
+                </form>-->
+
+                <form action="" method=post>
+                    {{ form.hidden_tag() }}
+
+                    <label>
+                        {{ form.loginid( **{'aria-describedby':"usernameHelpText"} ) }}
+                    </label>
+                    {% for message in form.loginid.errors %}
+                        <p class="help-text, error" id="usernameHelpText">{{ message }}</p>
+                    {% endfor %}
+
+                    <label>
+                        {{ form.password( **{'aria-describedby':"passwordHelpText"} ) }}
+                    </label>
+
+                    {{ form.submit(class_="success button submit") }}
+
                 </form>
             </div>
             <div class="col-5 col-m-5 col-s-12">

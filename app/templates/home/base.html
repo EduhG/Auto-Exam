@@ -9,10 +9,21 @@
                 <div class="header-nav col-6 col-m-6 col-s-6 vertical-align-content">
                     <nav class="">
                         <ul>
-                            <li><a href="/">Home</a></li>
+                            <li><a href="{{ url_for('.index') }}">Home</a></li>
+                            <li><a href="#features">About</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#features">Contact Us</a></li>
+                            {% if 'loginid' in session %}
+                                <li><a href="{{ url_for('autoExam.index') }}">Dashboard</a></li>
+                                <li><a href="{{ url_for('.logout') }}">Sign Out</a></li>
+                            {% else %}
+                                <li><a href="{{ url_for('.signup') }}">Sign Up</a></li>
+                                <li><a href="{{ url_for('.login') }}">Log In</a></li>
+                            {% endif %}
+                            <!--<li><a href="/">Home</a></li>
                             <li><a href="#features">Features</a></li>
                             <li><a href="/signup">Sign up</a></li>
-                            <li><a href="/login">Log in</a></li>
+                            <li><a href="/login">Log in</a></li>-->
                         </ul>
                     </nav>
                 </div>

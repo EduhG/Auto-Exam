@@ -17,13 +17,14 @@ def login():
     form = SigninForm()
 
     if 'loginid' in session:
+        print session['loginid']
         return redirect(url_for('autoExam.index'))
 
     if request.method == 'POST':
         if form.validate() is False:
             return render_template('home/login.html', form=form)
         else:
-            session['loginid'] = form.email.data
+            session['loginid'] = form.loginid.data
             return redirect(url_for('autoExam.index'))
 
     elif request.method == 'GET':
