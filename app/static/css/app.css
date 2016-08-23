@@ -300,6 +300,32 @@ Column Items with Description
     text-align: center;
 }
 
+.border-top {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.border-top:first-of-type {
+    border-top: 0px solid rgba(255, 255, 255, 0.3);
+}
+
+.border-left {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.border-right {
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.border-bottom {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.border-bottom:last-of-type {
+    border-bottom: 0px solid rgba(0, 0, 0, 0.3);
+}
+
+
+
 #body-wrapper > .row {
     max-width: 100%
 }
@@ -344,21 +370,21 @@ Column Items with Description
     color: #fff;
     height: 100%;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .header-nav li a{
     color: #fff;
     height: 100%;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .header-nav li a:hover{
     color: #ddd;
     height: 100%;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .landing-bg {
@@ -539,7 +565,7 @@ Column Items with Description
 .navigation .has-submenu > a:after {
     content: "\f123";
     font-family: "Ionicons";
-    margin-left: 4px;
+    margin-left: 10px;
     color: #CCD1D9;
 }
 
@@ -549,19 +575,22 @@ Column Items with Description
     background-color: #1d1d1d;
     width: 200px;
     overflow: hidden;
-    box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.1);
     margin-top: 10px;
     height: auto;
 }
 
 .navigation .has-submenu ul li a {
-    padding: 8px 12px;
+    padding: 3px 5px;
     display: block;
     color: #fff;
 }
 
-.navigation .has-submenu ul li a:hover {
-    background-color: #fafafa;
+.navigation .has-submenu ul li:hover {
+    background-color: #000;
+}
+
+.navigation .has-submenu ul li:hover a{
+    color: #ddd;
 }
 
 .navigation > ul > li {

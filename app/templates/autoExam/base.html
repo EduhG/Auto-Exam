@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block head %}
     {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/iCheck/skins/all.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/iCheck/skins/flat/blue.css') }}">
+
+    <script src="{{ url_for('static', filename='plugins/select2-4.0.3/css/select2.min.css') }}"></script>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/autoExam/app.css') }}">
 {% endblock %}
 {% block content %}
@@ -68,4 +73,12 @@
             </div>
         </footer>
     </div>
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='plugins/iCheck/icheck.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='plugins/select2-4.0.3/js/select2.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/autoExam/app.js') }}"></script>
 {% endblock %}
