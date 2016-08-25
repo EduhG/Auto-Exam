@@ -9,4 +9,6 @@ $(document).ready(function(){
         /*placeholder: "Select a state",
         allowClear: true*/
     });
+
+    Materialize.updateTextFields();
 });

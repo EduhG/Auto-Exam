@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% block foundationcss %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}">
+{% endblock %}
+
 {% block content %}
     <div id="body-wrapper" class="body-wrapper">
         <div class="header">
@@ -49,4 +53,7 @@
         {% block content2 %}
         {% endblock %}
     </div>
+{% endblock %}
+{% block foundationjs %}
+    <script src="{{ url_for('static', filename='js/vendor/foundation.js') }}"></script>
 {% endblock %}

@@ -1,6 +1,16 @@
 {% extends "autoExam/base.html" %}
 {% block content1 %}
-    <div id="breadcrums"></div>
+    <div id="breadcrums">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="#!" class="breadcrumb">First</a>
+                    <a href="#!" class="breadcrumb">Second</a>
+                    <a href="#!" class="breadcrumb">Third</a>
+                </div>
+            </div>
+        </nav>
+    </div>
 
     <div class="content-container vertical-align-content">
         <div class="contents">
@@ -85,6 +95,13 @@
                                     </select>
                                 </label>
                                 <p class="help-text" id="streamHelpText"></p>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" type="email" class="validate">
+                                    <label for="email">Email</label>
+                                </div>
                             </div>
 
                             <div class="input-group">
