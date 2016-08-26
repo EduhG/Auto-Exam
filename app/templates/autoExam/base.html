@@ -16,6 +16,7 @@
             -moz-user-select: none;
             -webkit-user-select: none;
             -ms-user-select: none;
+            margin-top: 10px;
         }
     </style>
 {% endblock %}
@@ -52,12 +53,19 @@
 
         <div id="container">
             <div id="sidebar">
-                <nav>
+                <nav id="sidenav">
                     <ul class="">
                         <li class="border-bottom border-top"><a class="" href="/autoexam"><i class="ion-ios-home"></i>Dashboard</a></li>
                         <li class="border-bottom border-top"><a class="" href="/autoexam/addStudent"><i class="ion-person-add"></i>Student Registration</a></li>
-                        <li class="border-bottom border-top"><a class="" href="/autoexam/enterMarks"><i class="ion-ios-compose"></i>Exam Management</a></li>
-                        <li class="border-bottom border-top"><a class="" href="/autoexam/reports"><i class="ion-ios-paper"></i>Reports</a></li>
+                        <li class="submenu border-bottom border-top">
+                            <a class="" href="#"><i class="ion-ios-compose"></i>Exam Management</a>
+                            <ul>
+                                <li class="vertical-align-content border-bottom border-top"><a class="" href="/autoexam">Marks Entry</a></li>
+                                <li class="vertical-align-content border-bottom border-top"><a class="" href="/autoexam">Performance Analysis</a></li>
+                                <li class="vertical-align-content border-bottom border-top"><a class="" href="/autoexam">General Settings</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </nav>
 
