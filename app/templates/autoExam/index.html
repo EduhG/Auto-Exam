@@ -1,4 +1,58 @@
 {% extends "autoExam/base.html" %}
 {% block content1 %}
     <div id="breadcrums"></div>
+
+    <div class="row" style="padding: 10px">
+        <div class="col-6 col-m-6 cols-12" style="padding: 10px;">
+            <div class="dashboard-container" style="padding: 10px; border: 0px solid; background: white">
+                <div class="row" style="padding: 0; margin: 0">
+                    <div class="col-12 form-header" style="padding: 0; margin: 0">
+                        <h5 style="width: 100%">Annual Subject Performance</h5>
+                    </div>
+                </div>
+                <canvas id="buyers" style="background: white; width: 100%;"></canvas>
+            </div>
+        </div>
+
+        <div class="col-6 col-m-6 cols-12" style="padding: 10px;">
+            <div class="dashboard-container" style="padding: 10px; border: 0px solid; background: white">
+                <div class="row" style="padding: 0; margin: 0">
+                    <div class="col-12 form-header" style="padding: 0; margin: 0">
+                        <h5 style="width: 100%">Subject Performance</h5>
+                    </div>
+                </div>
+                <canvas id="termly" style="background: white; width: 100%;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="padding: 0px 10px">
+        <div class="col-4 col-m-4 cols-12" style="padding: 10px; border: 0px solid">
+            <div class="dashboard-container" style="padding: 10px; border: 0px solid; background: white">
+                <div class="row" style="padding: 0; margin: 0">
+                    <div class="col-12 form-header" style="padding: 0; margin: 0">
+                        <h5 style="width: 100%">Subject Ranking</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 col-m-4 cols-12" style="padding: 10px; border: 0px solid">
+            <div class="dashboard-container" style="padding: 10px; border: 0px solid; background: white">
+                <div class="row" style="padding: 0; margin: 0">
+                    <div class="col-12 form-header" style="padding: 0; margin: 0">
+                        <h5 style="width: 100%">Subject Ranking</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 col-m-4 cols-12" style="padding: 10px; border: 0px solid">
+            <div class="dashboard-container" style="padding: 10px; border: 0px solid; background: white">
+                <div class="row" style="padding: 0; margin: 0">
+                    <div class="col-12 form-header" style="padding: 0; margin: 0">
+                        <h5 style="width: 100%">Subject Ranking</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
