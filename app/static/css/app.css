@@ -324,7 +324,22 @@ Column Items with Description
     border-bottom: 0px solid rgba(0, 0, 0, 0.3);
 }
 
+/*
+nav {
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
 
+nav ul, nav ul, nav li, nav a, nav i{
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+nav {
+    height: auto !important;
+}*/
 
 #body-wrapper > .row {
     max-width: 100%
