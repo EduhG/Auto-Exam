@@ -79,10 +79,6 @@ class NewStudentForm(Form):
     # form = StringField("Email", [validators.DataRequired("Please enter your email address.")])
     marks = PasswordField('Password', [validators.DataRequired("Please enter a password.")])
 
-    # language = SelectField('Languages', choices = [('cpp', 'C++'), ('py', 'Python')])
-
-    # submit = SubmitField("Create account")
-
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)
 
@@ -90,16 +86,9 @@ class NewStudentForm(Form):
         if not Form.validate(self):
             return False
 
-        user = User.query.filter_by(email=self.email.data.lower()).first()
+        user = Student.query.filter_by(regnumber=self.regnumber.data.lower()).first()
         if user:
-            self.email.errors.append("That email is already taken")
-            return False
-        else:
-            return True
-
-        user = User.query.filter_by(username=self.username.data.lower()).first()
-        if user:
-            self.username.errors.append("That username is already taken")
+            self.email.errors.append("That reg number is already taken")
             return False
         else:
             return True

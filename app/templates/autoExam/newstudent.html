@@ -9,102 +9,9 @@
                         <h5>New Registration</h5>
                     </div>
                 </div>
-                <form action="" method="POST">
-                    {{ form.hidden_tag() }}
 
-                    <div class="row">
-                        <div class="col-6"></div>
-                        <div class="col-6">
-                            <div class="input-group">
-                                <label>Reg Date:
-                                    {{ form.regdate( **{'aria-describedby':"regDateHelpText"} ) }}
-                                </label>
-                                <p class="help-text" id="regDateHelpText">{{ message }}</p>
-                            </div>
 
-                            <div class="input-group">
-                                <label>Reg Number:
-                                    {{ form.regnumber( **{'aria-describedby':"regNoHelpText"} ) }}
-                                </label>
-                                <p class="help-text" id="regNoHelpText">{{ message }}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="input-group">
-                                <label>First Name:
-                                    {{ form.firstname( **{'aria-describedby':"firstNameHelpText"} ) }}
-                                </label>
-                                <p class="help-text" id="firstNameHelpText">{{ message }}</p>
-                            </div>
-
-                            <div class="input-group">
-                                <label>Middle Name:
-                                    {{ form.middlename( **{'aria-describedby':"middleNameHelpText"} ) }}
-                                </label>
-                                <p class="help-text" id="middleNameHelpText">{{ message }}</p>
-                            </div>
-
-                            <div class="input-group">
-                                <label>Last Name:
-                                    {{ form.lastname( **{'aria-describedby':"lastNameHelpText"} ) }}
-                                </label>
-                                <p class="help-text" id="lastNameHelpText">{{ message }}</p>
-                            </div>
-
-                            <div class="input-group">
-                                <fieldset class="">
-                                    <label style="margin-bottom: 5px">Gender:</label>
-                                    <input type="radio" name="gender" value="Male" id="male" style="margin-right:5px">Male
-                                    <input type="radio" name="gender" value="Female" id="female" style="margin-right:5px; margin-left:50px;"> Female
-                                </fieldset>
-                                <p class="help-text" id="genderHelpText">{{ message }}</p>
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <div class="input-group">
-                                <label>Class / Form:
-                                    <select name="form">
-                                    {% for form in forms %}
-                                        <option value="{{form[0]}}">{{ form[1] }}</option>
-                                    {% endfor %}
-                                    </select>
-                                </label>
-                                <p class="help-text" id="formHelpText">{{ message }}</p>
-                            </div>
-
-                            <div class="input-group">
-                                <label>Stream:
-                                    <select name="stream">
-                                        <option value="streama">Block A</option>
-                                        <option value="streama">Block B</option>
-                                        <option value="streama">Block C</option>
-                                    </select>
-                                </label>
-                                <p class="help-text" id="streamHelpText">{{ message }}</p>
-                            </div>
-
-                            <div class="input-group">
-                                <label>Admission Marks:
-                                    {{ form.marks( **{'aria-describedby':"marksHelpText"} ) }}
-                                </label>
-                                <p class="help-text" id="marksHelpText">{{ message }}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row form-footer">
-                        <div class="col-12">
-                            <button type="submit" class="success button">Save Details</button>
-                            <button type="reset" class="alert button">Clear Details</button>
-                        </div>
-                    </div>
-                </form>
-
-                <!--<form action="POST">
+                <form method="">
                     <div class="row">
                         <div class="col-6"></div>
                         <div class="col-6">
@@ -195,7 +102,7 @@
                             <button type="reset" class="alert button">Clear Details</button>
                         </div>
                     </div>
-                </form>-->
+                </form>
             </div>
         </div>
     </div>

@@ -37,14 +37,14 @@ class Student(db.Model):
     marks = db.Column(db.Integer)
 
     def __init__(self, firstname, middlename, lastname, gender, regdate, regnumber, stream, form, marks):
-        self.firstname = firstname.title()
-        self.middlename = middlename.title()
-        self.lastname = lastname.title()
-        self.gender = gender.title()
-        self.regdate = regdate.title()
-        self.regnumber = regnumber.title()
-        self.stream = stream.title()
-        self.form = form.title()
+        self.firstname = firstname
+        self.middlename = middlename
+        self.lastname = lastname
+        self.gender = gender
+        self.regdate = regdate
+        self.regnumber = regnumber
+        self.stream = stream
+        self.form = form
         self.marks = marks
 
 

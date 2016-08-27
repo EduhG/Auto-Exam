@@ -29,11 +29,11 @@ def index():
 def addstudent():
     regform = NewStudentForm()
 
-    form = request.form['form']
-    stream = request.form['stream']
-    gender = request.form['gender']
-
     if request.method == 'POST':
+        form = request.form['form']
+        stream = request.form['stream']
+        gender = request.form['gender']
+
         if regform.validate() is False:
             return render_template('autoExam/newstudent.html', form=regform, forms=get_forms())
         else:
