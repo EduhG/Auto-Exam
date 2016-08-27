@@ -70,16 +70,16 @@ class Marks(db.Model):
         self.score = score
 
 
-# class Forms(db.Model):
-#     __tablename__ = 'forms'
-#
-#     id = db.Column(db.Integer, primary_key=True)
-#     code = db.Column(db.String(100), unique=True)
-#     form = db.Column(db.String(100))
-#
-#     def __init__(self, code, form):
-#         self.code = code.title()
-#         self.form = form.title()
+class Forms(db.Model):
+    __tablename__ = 'forms'
+
+    id = db.Column(db.Integer, primary_key=True)
+    code = db.Column(db.String(100), unique=True)
+    form = db.Column(db.String(100))
+
+    def __init__(self, code, form):
+        self.code = code.title()
+        self.form = form.title()
 
 
 class Subjects(db.Model):

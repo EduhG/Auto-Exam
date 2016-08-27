@@ -3,7 +3,7 @@ from flask import session
 from sqlalchemy import or_
 from app import db
 from wtforms import SubmitField, validators, ValidationError, PasswordField, StringField, RadioField, SelectField
-from app.models import Student, User, Marks, Subjects
+from app.models import Student, User, Marks, Subjects, Forms
 
 
 class SignupForm(Form):
@@ -67,22 +67,21 @@ class SigninForm(Form):
             return False
 
 
-class NewStudent(Form):
+class NewStudentForm(Form):
     firstname = StringField("First name", [validators.DataRequired("Please enter your first name.")])
     middlename = StringField("First name", [validators.DataRequired("Please enter your first name.")])
     lastname = StringField("First name", [validators.DataRequired("Please enter your first name.")])
-    gender = RadioField('Gender', choices=[('M', 'Male'), ('F', 'Female')])
+    # gender = RadioField('Gender', choices=[('M', 'Male'), ('F', 'Female')])
     regdate = StringField("First name", [validators.DataRequired("Please enter your first name.")])
     regnumber = StringField("First name", [validators.DataRequired("Please enter your first name.")])
-    stream = StringField("First name", [validators.DataRequired("Please enter your first name.")])
-    firstname = StringField("First name", [validators.DataRequired("Please enter your first name.")])
+    # stream = StringField("First name", [validators.DataRequired("Please enter your first name.")])
 
-    form = StringField("Email", [validators.DataRequired("Please enter your email address.")])
+    # form = StringField("Email", [validators.DataRequired("Please enter your email address.")])
     marks = PasswordField('Password', [validators.DataRequired("Please enter a password.")])
 
     # language = SelectField('Languages', choices = [('cpp', 'C++'), ('py', 'Python')])
 
-    submit = SubmitField("Create account")
+    # submit = SubmitField("Create account")
 
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)
@@ -136,3 +135,25 @@ class SubjectsForm(Form):
             return False
         else:
             return True
+
+
+class ClassesForm(Form):
+    code = StringField("First name", [validators.DataRequired("Please enter subject short code.")])
+    name = StringField("First name", [validators.DataRequired("Please enter subject name.")])
+
+    submit = SubmitField("Save Details")
+
+    def __init__(self, *args, **kwargs):
+        Form.__init__(self, *args, **kwargs)
+
+    def validate(self):
+        if not Form.validate(self):
+            return False
+
+        form = Forms.query.filter_by(code=self.code.data.lower()).first()
+        if form:
+            self.code.errors.append("That code is already in use")
+            return False
+        else:
+            return True
+
