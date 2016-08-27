@@ -98,15 +98,91 @@
                     <div class="row">
                         <div class="col-12">
                             <ul class="tabs" data-tabs id="example-tabs">
-                                <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
-                                <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
+                                <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Individual</a></li>
+                                <li class="tabs-title"><a href="#panel2">Bulk Entry</a></li>
                             </ul>
                             <div class="tabs-content" data-tabs-content="example-tabs">
                                 <div class="tabs-panel is-active" id="panel1">
-                                    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+                                    <table class="table table-bordered table-striped table-hover with-check">
+                                        <thead>
+                                            <tr style="border-top:1px solid #CDCDCD;">
+                                                <th style="width:20%;">Code</th>
+                                                <th>Subject</th>
+                                                <th style="width:15%;">Marks</th>
+                                                <th style="width:10%;">Grade</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Row 1</td>
+                                                <td>Row 2</td>
+                                                <td>Row 3</td>
+                                                <td>Row 4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Row 1</td>
+                                                <td>Row 2</td>
+                                                <td>Row 3</td>
+                                                <td>Row 4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Row 1</td>
+                                                <td>Row 2</td>
+                                                <td>Row 3</td>
+                                                <td>Row 4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Row 1</td>
+                                                <td>Row 2</td>
+                                                <td>Row 3</td>
+                                                <td>Row 4</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div class="tabs-panel" id="panel2">
-                                    <p>Suspendisse dictum feugiat nisl ut dapibus.  Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.  Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+                                    <div class="input-group">
+                                        <label>Full Name:
+                                            <input type="text" placeholder="Full Name" aria-describedby="subjectHelpText">
+                                        </label>
+                                        <p class="help-text" id="subjectHelpText"></p>
+                                    </div>
+                                    <table class="table table-bordered table-striped table-hover with-check">
+                                        <thead>
+                                            <tr style="border-top:1px solid #CDCDCD;">
+                                                <th style="width:20%;">Code</th>
+                                                <th>Subject</th>
+                                                <th style="width:15%;">Marks</th>
+                                                <th style="width:10%;">Grade</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Row 1</td>
+                                                <td>Row 2</td>
+                                                <td>Row 3</td>
+                                                <td>Row 4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Row 1</td>
+                                                <td>Row 2</td>
+                                                <td>Row 3</td>
+                                                <td>Row 4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Row 1</td>
+                                                <td>Row 2</td>
+                                                <td>Row 3</td>
+                                                <td>Row 4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Row 1</td>
+                                                <td>Row 2</td>
+                                                <td>Row 3</td>
+                                                <td>Row 4</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

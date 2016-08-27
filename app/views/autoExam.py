@@ -24,3 +24,6 @@ def reports():
     return render_template('autoExam/index.html')
 
 
+@autoExam_blueprint.route('/autoexam/settings')
+def settings():
+    return render_template('autoExam/settings.html')
