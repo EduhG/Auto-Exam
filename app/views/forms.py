@@ -1,7 +1,9 @@
 from flask_wtf import Form
+from flask import session
 from sqlalchemy import or_
-from wtforms import SubmitField, validators, ValidationError, PasswordField, StringField, RadioField
-from app.models import Student, User, Marks
+from app import db
+from wtforms import SubmitField, validators, ValidationError, PasswordField, StringField, RadioField, SelectField
+from app.models import Student, User, Marks, Subjects
 
 
 class SignupForm(Form):
@@ -99,6 +101,38 @@ class NewStudent(Form):
         user = User.query.filter_by(username=self.username.data.lower()).first()
         if user:
             self.username.errors.append("That username is already taken")
+            return False
+        else:
+            return True
+
+
+class SubjectsForm(Form):
+    code = StringField("First name", [validators.DataRequired("Please enter subject short code.")])
+    name = StringField("First name", [validators.DataRequired("Please enter subject name.")])
+    cartegory = SelectField('Languages', choices=[('Languages', 'Languages'),
+                                                 ('Mathematics', 'Mathematics'),
+                                                 ('Sciences', 'Sciences'),
+                                                 ('Humanities', 'Humanities')])
+
+    submit = SubmitField("Save Details")
+
+    def __init__(self, *args, **kwargs):
+        Form.__init__(self, *args, **kwargs)
+
+    def validate(self):
+        if not Form.validate(self):
+            return False
+
+        subject = Subjects.query.filter_by(code=self.code.data.lower()).first()
+        if subject:
+            self.email.errors.append("That code is already in use")
+            return False
+        else:
+            return True
+
+        subject = Subjects.query.filter_by(name=self.name.data.lower()).first()
+        if subject:
+            self.username.errors.append("That subject already exists")
             return False
         else:
             return True

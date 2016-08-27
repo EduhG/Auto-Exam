@@ -11,24 +11,24 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-4" style="">
-                        <form action="">
+                    <div class="col-4" style="padding-top: 0">
+                        <!--<form action="">
                             <div class="row" style="padding: 0; margin: 0;">
                                 <div class="input-group">
-                                    <label>Reg Date:
+                                    <label>Code:
                                         <input type="text" placeholder="Reg Date" aria-describedby="regDateHelpText">
                                     </label>
                                     <p class="help-text" id="codeHelpText"></p>
                                 </div>
                                 <div class="input-group">
-                                    <label>Reg Date:
-                                        <input type="text" placeholder="Reg Date" aria-describedby="regDateHelpText">
+                                    <label>Subject Name:
+                                        <input type="text" placeholder="Reg Date" aria-describedby="nameHelpText">
                                     </label>
                                     <p class="help-text" id="nameHelpText"></p>
                                 </div>
                                 <div class="input-group">
-                                    <label>Reg Date:
-                                        <input type="text" placeholder="Reg Date" aria-describedby="regDateHelpText">
+                                    <label>Cartegory:
+                                        <input type="text" placeholder="Reg Date" aria-describedby="cartegoryHelpText">
                                     </label>
                                     <p class="help-text" id="cartegoryHelpText"></p>
                                 </div>
@@ -38,6 +38,33 @@
                                     <button type="button" class="alert button" style="width: 48%; float: right">Clear Details</button>
                                 </div>
                             </div>
+                        </form>-->
+                        <form action="" method=post>
+                            {{ form.hidden_tag() }}
+
+                            <label>Code:
+                                {{ form.code( **{'aria-describedby':"codeHelpText"} ) }}
+                            </label>
+                            {% for message in form.code.errors %}
+                                <p class="help-text, error" id="codeHelpText">{{ message }}</p>
+                            {% endfor %}
+
+                            <label>Subject Name:
+                                {{ form.name( **{'aria-describedby':"nameHelpText"} ) }}
+                            </label>
+                            {% for message in form.name.errors %}
+                                <p class="help-text" id="nameHelpText">{{ message }}</p>
+                            {% endfor %}
+
+                            <label>Cartegory:
+                                {{ form.cartegory( **{'aria-describedby':"cartegoryHelpText"} ) }}
+                            </label>
+                            {% for message in form.cartegory.errors %}
+                                <p class="help-text" id="cartegoryHelpText">{{ message }}</p>
+                            {% endfor %}
+
+                            {{ form.submit(class_="success button submit") }}
+
                         </form>
                     </div>
                     <div class="col-8">
@@ -46,35 +73,17 @@
                                 <tr style="border-top:1px solid #CDCDCD;">
                                     <th style="width:20%;">Code</th>
                                     <th>Subject</th>
-                                    <th style="width:15%;">Marks</th>
-                                    <th style="width:10%;">Grade</th>
+                                    <th style="width:35%;">Cateregy</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            {% for subject in subjects %}
                                 <tr>
-                                    <td>Row 1</td>
-                                    <td>Row 2</td>
-                                    <td>Row 3</td>
-                                    <td>Row 4</td>
+                                    <td>{{ subject[0] }}</td>
+                                    <td>{{ subject[1]}}</td>
+                                    <td>{{ subject[2] }}</td>
                                 </tr>
-                                <tr>
-                                    <td>Row 1</td>
-                                    <td>Row 2</td>
-                                    <td>Row 3</td>
-                                    <td>Row 4</td>
-                                </tr>
-                                <tr>
-                                    <td>Row 1</td>
-                                    <td>Row 2</td>
-                                    <td>Row 3</td>
-                                    <td>Row 4</td>
-                                </tr>
-                                <tr>
-                                    <td>Row 1</td>
-                                    <td>Row 2</td>
-                                    <td>Row 3</td>
-                                    <td>Row 4</td>
-                                </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>

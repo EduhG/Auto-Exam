@@ -68,3 +68,29 @@ class Marks(db.Model):
         self.merit = merit.title()
         self.subject = subject.title()
         self.score = score
+
+
+# class Forms(db.Model):
+#     __tablename__ = 'forms'
+#
+#     id = db.Column(db.Integer, primary_key=True)
+#     code = db.Column(db.String(100), unique=True)
+#     form = db.Column(db.String(100))
+#
+#     def __init__(self, code, form):
+#         self.code = code.title()
+#         self.form = form.title()
+
+
+class Subjects(db.Model):
+    __tablename__ = 'subjects'
+
+    id = db.Column(db.Integer, primary_key=True)
+    code = db.Column(db.String(100), unique=True)
+    name = db.Column(db.String(100))
+    cartegory = db.Column(db.String(100))
+
+    def __init__(self, code, name, cartegory):
+        self.code = code.title()
+        self.name = name.title()
+        self.cartegory = cartegory.title()

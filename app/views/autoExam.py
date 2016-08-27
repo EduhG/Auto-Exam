@@ -1,5 +1,7 @@
-from flask import Blueprint, render_template
-from forms import Student, Marks
+from flask import Blueprint, render_template, request, redirect, url_for, session
+from forms import Student, Marks, SubjectsForm
+from app.models import Subjects
+from app import db
 
 autoExam_blueprint = Blueprint('autoExam', __name__)
 
@@ -34,6 +36,27 @@ def forms():
     return render_template('autoExam/forms.html')
 
 
-@autoExam_blueprint.route('/autoexam/subjects')
+def get_categories():
+    subject_list = []
+    for subject in db.session.query(Subjects).all():
+        subject_list.append((subject.code, subject.name, subject.cartegory))
+    return subject_list
+
+
+@autoExam_blueprint.route('/autoexam/subjects', methods=['GET', 'POST'])
 def subjects():
-    return render_template('autoExam/subjects.html')
+
+    form = SubjectsForm()
+
+    if request.method == 'POST':
+        if form.validate() is False:
+            return render_template('autoExam/subjects.html', form=form, subjects=get_categories())
+        else:
+            newsubject = Subjects(form.code.data, form.name.data, form.cartegory.data)
+            db.session.add(newsubject)
+            db.session.commit()
+
+            return redirect(url_for('autoExam.subjects'))
+
+    elif request.method == 'GET':
+        return render_template('autoExam/subjects.html', form=form, subjects=get_categories())
