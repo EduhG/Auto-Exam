@@ -5,7 +5,8 @@ from app.models import User, Student, Marks
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
 
-app = create_app(os.getenv('APP_SETTINGS') or 'default')
+# app = create_app(os.getenv('APP_SETTINGS') or 'default')
+app = create_app('production')
 manager = Manager(app)
 migrate = Migrate(app, db)
 

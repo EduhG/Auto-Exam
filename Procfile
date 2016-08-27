@@ -1,1 +1,1 @@
-web: foregunicorn manage:app
+web: gunicorn manage:app

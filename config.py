@@ -19,6 +19,13 @@ class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
+class ProductionConfig(BaseConfig):
+    DEBUG = True
+    TESTING = False
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+
+
 class TestingConfig(BaseConfig):
     DEBUG = False
     TESTING = True
@@ -29,5 +36,6 @@ class TestingConfig(BaseConfig):
 config = {
     "development": DevelopmentConfig,
     "testing": TestingConfig,
-    "default": DevelopmentConfig
+    "default": DevelopmentConfig,
+    "production": ProductionConfig
 }
