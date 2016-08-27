@@ -1,0 +1,1 @@
+web: foregunicorn manage:app
