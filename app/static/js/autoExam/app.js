@@ -163,3 +163,5 @@ $('#sidenav>ul').on('click', '.submenu', function (e) {
     }
 
 });
+
+$(document).foundation();
