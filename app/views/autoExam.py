@@ -27,3 +27,13 @@ def reports():
 @autoExam_blueprint.route('/autoexam/settings')
 def settings():
     return render_template('autoExam/settings.html')
+
+
+@autoExam_blueprint.route('/autoexam/forms')
+def forms():
+    return render_template('autoExam/forms.html')
+
+
+@autoExam_blueprint.route('/autoexam/subjects')
+def subjects():
+    return render_template('autoExam/subjects.html')
