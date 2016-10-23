@@ -81,13 +81,6 @@ $(document).ready(function () {
         return false
     });
 
-    var table = $('#marksTable');
-
-    $('#marksTable .customerIDCell').each(function()
-    {
-      alert($(this).html());
-    });
-
     $('#marksTable tbody').on( 'keyup', 'td', function () {
         var marks = $(this).html();
         var row_index = $(this).parent().index() + 1;
@@ -121,9 +114,25 @@ $(document).ready(function () {
 
     } );
 
-    $(".marks").keyup(function(){
-        //var marks =
-        console.log()
+    function GetCellValues() {
+        var table = document.getElementById('marksTable');
+        for (var r = 0, n = table.rows.length; r < n; r++) {
+            for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
+                alert(table.rows[r].cells[c].innerHTML);
+            }
+        }
+    }
+
+    $('#save_table_marks').click(function () {
+        convertTAbleToJson();
+
         return false
     });
+    function convertTAbleToJson() {
+        var table = $('#marksTable').tableToJSON();
+        var table_data = JSON.stringify(table);
+        
+        //alert(JSON.stringify(table));
+    }
+
 });
