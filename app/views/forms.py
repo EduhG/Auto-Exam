@@ -67,31 +67,62 @@ class SigninForm(Form):
             return False
 
 
-class NewStudentForm(Form):
-    firstname = StringField("First name", [validators.DataRequired("Please enter your first name.")])
-    middlename = StringField("First name", [validators.DataRequired("Please enter your first name.")])
-    lastname = StringField("First name", [validators.DataRequired("Please enter your first name.")])
-    # gender = RadioField('Gender', choices=[('M', 'Male'), ('F', 'Female')])
-    regdate = StringField("First name", [validators.DataRequired("Please enter your first name.")])
-    regnumber = StringField("First name", [validators.DataRequired("Please enter your first name.")])
-    # stream = StringField("First name", [validators.DataRequired("Please enter your first name.")])
+# class NewStudentForm(Form):
+#     firstname = StringField("First name", [validators.DataRequired("Please enter your first name.")])
+#     middlename = StringField("First name", [validators.DataRequired("Please enter your first name.")])
+#     lastname = StringField("First name", [validators.DataRequired("Please enter your first name.")])
+#     # gender = RadioField('Gender', choices=[('M', 'Male'), ('F', 'Female')])
+#     regdate = StringField("First name", [validators.DataRequired("Please enter your first name.")])
+#     regnumber = StringField("First name", [validators.DataRequired("Please enter your first name.")])
+#     # stream = StringField("First name", [validators.DataRequired("Please enter your first name.")])
+#
+#     # form = StringField("Email", [validators.DataRequired("Please enter your email address.")])
+#     marks = PasswordField('Password', [validators.DataRequired("Please enter a password.")])
+#
+#     def __init__(self, *args, **kwargs):
+#         Form.__init__(self, *args, **kwargs)
+#
+#     def validate(self):
+#         if not Form.validate(self):
+#             return False
+#
+#         user = Student.query.filter_by(regnumber=self.regnumber.data.lower()).first()
+#         if user:
+#             self.email.errors.append("That reg number is already taken")
+#             return False
+#         else:
+#             return True
 
-    # form = StringField("Email", [validators.DataRequired("Please enter your email address.")])
-    marks = PasswordField('Password', [validators.DataRequired("Please enter a password.")])
+
+class NewStudentForm(Form):
+    firstname = StringField("First Name", [validators.InputRequired("Please enter your first name.")])
+    middlename = StringField("Middle Name", [validators.InputRequired("Please enter your first name.")])
+    lastname = StringField("Last Name", [validators.InputRequired("Please enter your first name.")])
+    gender = RadioField('Gender', [validators.InputRequired("Please select gender.")],
+                        choices=[('Male', 'Male'), ('Female', 'Female')])
+    regdate = StringField("Reg Date", [validators.InputRequired("Please enter your first name.")])
+    regnumber = StringField("Reg Number", [validators.InputRequired("Please enter your first name.")])
+    stream = SelectField('Stream', choices=[('', 'Choose Stream')])
+    adm_class = SelectField('Form', choices=[('', 'Choose Form')])
+    marks = PasswordField('Adm Marks', [validators.DataRequired("Please enter a password.")])
+
+    submit = SubmitField("Save Details")
 
     def __init__(self, *args, **kwargs):
-        Form.__init__(self, *args, **kwargs)
+        super(NewStudentForm, self).__init__(*args, **kwargs)
 
     def validate(self):
-        if not Form.validate(self):
-            return False
 
-        user = Student.query.filter_by(regnumber=self.regnumber.data.lower()).first()
-        if user:
-            self.email.errors.append("That reg number is already taken")
-            return False
-        else:
+        user = Student.query.filter_by(regnumber=str(self.regnumber.data).lower()).first()
+
+        if not user:
             return True
+        else:
+            new_errors = list(self.cartegory_name.errors)
+            new_errors.append("That reg number is already taken")
+            self.regnumber.errors = tuple(new_errors)
+
+            return False
 
 
 class SubjectsForm(Form):

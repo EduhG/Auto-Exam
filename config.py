@@ -5,6 +5,7 @@ class BaseConfig(object):
     DEBUG = False
     SECRET_KEY = 'yiwj\xfa\xe0\x18\xe7\xde\xa1\x8b#\x9e\xdbyXqC\x9e\xcdK\xcaz8'
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    # SQLALCHEMY_DATABASE_URI = "postgresql://postgres:mtotooh@localhost/auto_exam"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     @staticmethod

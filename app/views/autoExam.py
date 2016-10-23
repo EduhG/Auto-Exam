@@ -27,25 +27,55 @@ def index():
 
 @autoExam_blueprint.route('/autoexam/addStudent', methods=['GET', 'POST'])
 def addstudent():
-    regform = NewStudentForm()
+    form = NewStudentForm()
 
-    if request.method == 'POST':
-        form = request.form['form']
+    print request.form
+
+    if form.validate_on_submit():
+        adm_class = request.form['adm_class']
         stream = request.form['stream']
         gender = request.form['gender']
+        firstname = request.form['firstname']
+        middlename = request.form['middlename']
+        lastname = request.form['lastname']
+        regdate = request.form['regdate']
+        regnumber = request.form['regnumber']
+        marks = request.form['marks']
 
-        if regform.validate() is False:
-            return render_template('autoExam/newstudent.html', form=regform, forms=get_forms())
-        else:
-            newstudent = Student(regform.firstname, regform.middlename, regform.lastname,
-                                 gender, regform.regdate, regform.regnumber, stream, form, regform.marks)
-            db.session.add(newstudent)
-            db.session.commit()
+        newstudent = Student(firstname, middlename, lastname, gender, regdate, regnumber, stream, adm_class, marks)
+        db.session.add(newstudent)
+        db.session.commit()
 
-            return redirect(url_for('autoExam.addstudent'))
+        return redirect(url_for('autoExam.addstudent'))
 
-    elif request.method == 'GET':
-        return render_template('autoExam/newstudent.html', form=regform, forms=get_forms())
+    # print 'add student'
+    #
+    # if request.method == 'POST':
+    #     print request.form
+    #
+    #     form = request.form['form']
+    #     stream = request.form['stream']
+    #     gender = request.form['gender']
+    #
+    #     firstname = request.form['firstname']
+    #     middlename = request.form['middlename']
+    #     lastname = request.form['lastname']
+    #     regdate = request.form['regdate']
+    #     regnumber = request.form['regnumber']
+    #     marks = request.form['marks']
+    #
+    #     if regform.validate() is False:
+    #         return render_template('autoExam/newstudent.html', form=regform, forms=get_forms())
+    #     else:
+    #         newstudent = Student(regform.firstname, regform.middlename, regform.lastname,
+    #                              gender, regform.regdate, regform.regnumber, stream, form, regform.marks)
+    #         db.session.add(newstudent)
+    #         db.session.commit()
+    #
+    #         return redirect(url_for('autoExam.addstudent'))
+    #
+    # elif request.method == 'GET':
+    return render_template('autoExam/newstudent.html', form=form, forms=get_forms())
 
 
 @autoExam_blueprint.route('/autoexam/enterMarks')
