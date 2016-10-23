@@ -42,6 +42,10 @@ def addstudent():
         regnumber = request.form['regnumber']
         marks = request.form['marks']
 
+        if adm_class == '' or stream == '' or firstname == '' or lastname == '' or \
+                        regdate == '' or regnumber == '' or marks == '':
+            return redirect(url_for('autoExam.addstudent'))
+
         newstudent = Student(firstname, middlename, lastname, gender, regdate, regnumber, stream, adm_class, marks)
         db.session.add(newstudent)
         db.session.commit()

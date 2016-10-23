@@ -100,7 +100,8 @@ class NewStudentForm(Form):
     lastname = StringField("Last Name", [validators.InputRequired("Please enter your first name.")])
     gender = RadioField('Gender', [validators.InputRequired("Please select gender.")],
                         choices=[('Male', 'Male'), ('Female', 'Female')])
-    regdate = StringField("Reg Date", [validators.InputRequired("Please enter your first name.")])
+    regdate = StringField("Reg Date", [validators.InputRequired("Please enter your first name.")],
+                          render_kw={"placeholder": "Reg Date"})
     regnumber = StringField("Reg Number", [validators.InputRequired("Please enter your first name.")])
     stream = SelectField('Stream', [validators.Length(2, 60, "Choose Stream")], choices=[('', 'Choose Stream')])
     adm_class = SelectField('Form', [validators.Length(2, 60, "Choose Form")], choices=[('', 'Choose Form')])
