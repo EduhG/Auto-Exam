@@ -97,7 +97,7 @@ def list_students():
 
 @autoExam_blueprint.route('/autoexam/enterMarks')
 def entermarks():
-    return render_template('autoExam/entermarks.html', subjects=get_categories())
+    return render_template('autoExam/entermarks.html', subjects=get_categories(), forms=get_forms())
 
 
 @autoExam_blueprint.route('/autoexam/reports')

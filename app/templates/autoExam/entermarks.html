@@ -27,7 +27,12 @@
                                 <div class="col-6" style="padding-top: 0; padding-bottom: 0;">
                                     <div class="input-group">
                                         <label>Term:
-                                            <input type="text" placeholder="Term" aria-describedby="regDateHelpText">
+                                            <select name="term">
+                                                <option value="">Choose Term</option>
+                                                <option value="Term 1">Term 1</option>
+                                                <option value="Term 2">Term 2</option>
+                                                <option value="Term 3">Term 3</option>
+                                            </select>
                                         </label>
                                         <p class="help-text" id="termHelpText"></p>
                                     </div>
@@ -44,8 +49,13 @@
                             <div class="row" style="padding: 0; margin: 0;">
                                 <div class="col-6" style="padding-top: 0; padding-bottom: 0;">
                                     <div class="input-group">
-                                        <label>Class/Form:
-                                            <input type="text" placeholder="Class/Form" aria-describedby="regDateHelpText">
+                                        <label>Class / Form:
+                                            <select name="adm_class">
+                                                <option value="">Choose Form</option>
+                                            {% for form in forms %}
+                                                <option value="{{form[0]}}">{{ form[1] }}</option>
+                                            {% endfor %}
+                                            </select>
                                         </label>
                                         <p class="help-text" id="classHelpText"></p>
                                     </div>
@@ -53,13 +63,18 @@
                                 <div class="col-6" style="padding-top: 0; padding-bottom: 0;">
                                     <div class="input-group">
                                         <label>Stream:
-                                            <input type="text" placeholder="Stream" aria-describedby="regDateHelpText">
+                                            <select name="stream">
+                                                <option value="">Choose Stream</option>
+                                                <option value="A">Block A</option>
+                                                <option value="B">Block B</option>
+                                                <option value="C">Block C</option>
+                                            </select>
                                         </label>
                                         <p class="help-text" id="streamHelpText"></p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" style="padding: 0; margin: 0;">
+                            <!--<div class="row" style="padding: 0; margin: 0;">
                                 <div class="col-6" style="padding-top: 0; padding-bottom: 0;">
                                     <div class="input-group">
                                         <label>Merit:
@@ -76,7 +91,7 @@
                                         <p class="help-text" id="typeHelpText"></p>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                         <div class="col-6" style="padding-top: 0; padding-bottom: 0;">
                             <div class="input-group">
@@ -99,7 +114,7 @@
                         <div class="col-12">
                             <ul class="tabs" data-tabs id="example-tabs">
                                 <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Individual</a></li>
-                                <li class="tabs-title"><a href="#panel2">Bulk Entry</a></li>
+                                <!--<li class="tabs-title"><a href="#panel2">Bulk Entry</a></li>-->
                             </ul>
                             <div class="tabs-content" data-tabs-content="example-tabs">
                                 <div class="tabs-panel is-active" id="panel1">
