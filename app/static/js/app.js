@@ -48,4 +48,33 @@ $(document).ready(function () {
             }
         });
     });
+
+    $("#search_marks_btn").click(function(){
+        var student_id = $('#marks_search_id').val();
+        var term = $('#term').val();
+        var year = $('#year').val();
+        var form = $('#form').val();
+
+        $.ajax({
+            url: "/autoexam/search_marks",
+            method: "GET",
+            dataType: 'html',
+            data: {
+                student_id: student_id,
+                term: term,
+                year: year,
+                form: form
+            },
+            success: function(data) {
+                if(data.length > 0){
+                    $('#marks_tbl_body').html(data);
+                } else {
+                    $( "#marks_tbl_body" ).html(data);
+                }
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    });
 });

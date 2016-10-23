@@ -1,6 +1,8 @@
+{% for result in search_results%}
 <tr>
-    <td>Row 1</td>
-    <td>Row 2</td>
-    <td style="padding: 0px;"><input id="" type="text" style="margin: 0px; border: none; border-radius: 0"></td>
-    <td></td>
+    <td> {{ result.code }} </td>
+    <td> {{ result.subject }} </td>
+    <td style="padding: 0px;"><input id=" {{result.code}}" type="text" style="margin: 0px; border: none; border-radius: 0"></td>
+    <td> {{ result.grade }} </td>
 </tr>
+{% endfor %}

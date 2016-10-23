@@ -51,6 +51,38 @@ def reported_cases_search():
     return response
 
 
+@autoExam_blueprint.route('/autoexam/search_marks')
+def search_marks():
+    search_results = []
+
+    regnumber = request.args.get('student_id')
+    term = request.args.get('term')
+    year = request.args.get('year')
+    form = request.args.get('form')
+
+    student_marks = db.session.query(Marks).filter_by(regnumber=regnumber)\
+        .filter_by(term=term).filter_by(year=year).filter_by(form=form).all()
+
+    if student_marks:
+        for marks in db.session.query(Marks).filter_by(regnumber=regnumber) \
+                .filter_by(term=term).filter_by(year=year).filter_by(form=form).all():
+
+            found = {'subject': marks.subject, 'score': marks.score, 'code': marks.code, 'grade': marks.grade}
+
+            search_results.append(found)
+    else:
+        print 'not found'
+
+    # for marks in db.session.query(Marks).filter_by(regnumber=regnumber)\
+    #         .filter_by(term=term).filter_by(year=year).filter_by(form=form).all():
+    #
+    #     found = {'subject': marks.subject, 'score': marks.score, 'code': marks.code, 'grade': marks.grade}
+    #
+    #     search_results.append(found)
+
+    return render_template('autoExam/enterMarksSearch.html', search_results=search_results)
+
+
 @autoExam_blueprint.route('/autoexam')
 def index():
     return render_template('autoExam/index.html')

@@ -56,18 +56,24 @@ class Marks(db.Model):
     fullname = db.Column(db.String(100))
     term = db.Column(db.String(100))
     year = db.Column(db.String(100))
+    form = db.Column(db.String(100))
     merit = db.Column(db.String(100))
+    code = db.Column(db.String(100))
     subject = db.Column(db.String(100))
     score = db.Column(db.Integer)
+    grade = db.Column(db.String(100))
 
-    def __init__(self, regnumber, fullname, term, year, merit, subject, score):
+    def __init__(self, regnumber, fullname, term, year, form, merit, subject, score, code, grade):
         self.regnumber = regnumber.title()
         self.fullname = fullname.title()
         self.term = term.title()
         self.year = year.title()
+        self.form = form.title()
         self.merit = merit.title()
         self.subject = subject.title()
         self.score = score
+        self.code = code.title()
+        self.grade = grade.title()
 
 
 class Forms(db.Model):
