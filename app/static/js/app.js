@@ -89,8 +89,36 @@ $(document).ready(function () {
     });
 
     $('#marksTable tbody').on( 'keyup', 'td', function () {
-        //console.log( table.cell( this ).data() );
-        console.log($(this).html())
+        var marks = $(this).html();
+        var row_index = $(this).parent().index() + 1;
+        var col_index = $(this).index() + 1;
+
+        if (marks < 40) {
+            $(this).closest('tr').find('td:eq(3)').html('E');
+        } else if (marks < 45) {
+            $(this).closest('tr').find('td:eq(3)').html('D-');
+        } else if (marks < 50) {
+            $(this).closest('tr').find('td:eq(3)').html('D');
+        } else if (marks < 55) {
+            $(this).closest('tr').find('td:eq(3)').html('D+');
+        } else if (marks < 60) {
+            $(this).closest('tr').find('td:eq(3)').html('C-');
+        } else if (marks < 65) {
+            $(this).closest('tr').find('td:eq(3)').html('C');
+        } else if (marks < 70) {
+            $(this).closest('tr').find('td:eq(3)').html('C+');
+        } else if (marks < 75) {
+            $(this).closest('tr').find('td:eq(3)').html('B-');
+        } else if (marks < 80) {
+            $(this).closest('tr').find('td:eq(3)').html('B');
+        } else if (marks < 85) {
+            $(this).closest('tr').find('td:eq(3)').html('B+');
+        } else if (marks < 90) {
+            $(this).closest('tr').find('td:eq(3)').html('A-');
+        } else if (marks < 100) {
+            $(this).closest('tr').find('td:eq(3)').html('A');
+        }
+
     } );
 
     $(".marks").keyup(function(){
