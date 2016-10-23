@@ -1,0 +1,153 @@
+{% extends "autoExam/base.html" %}
+{% block content1 %}
+    <div id="breadcrums"></div>
+    <div class="content-container vertical-align-content">
+        <div class="contents">
+            <div class="registration">
+                <div class="row">
+                    <div class="col-12 form-header">
+                        <h5>New Registration</h5>
+                    </div>
+                </div>
+
+
+                <form method="POST" action="/autoexam/addStudent">
+                    {{ form.hidden_tag() }}
+
+                    <div class="row">
+                        <div class="col-6"></div>
+                        <div class="col-6">
+                            <div class="input-group">
+                                <label>Reg Date:
+                                    <input name="regdate" type="text" placeholder="Reg Date" aria-describedby="regDateHelpText">
+                                </label>
+                                <p class="help-text" id="regDateHelpText"></p>
+                                <!--<label>Reg Date:
+                                    {{ form.regdate( class_="", **{'aria-describedby':"regDateHelpText"} ) }}
+                                </label>
+                                {% for message in form.regdate.errors %}
+                                <p class="help-text" id="regDateHelpText">{{ message }}</p>
+                                {% endfor %}-->
+                            </div>
+
+                            <div class="input-group">
+                                <label>Reg Number:
+                                    <input name="regnumber" type="text" placeholder="Reg Number" aria-describedby="regNoHelpText">
+                                </label>
+                                <p class="help-text" id="regNoHelpText"></p>
+                                <!--<label>Reg Number:
+                                    {{ form.regnumber( class_="", **{'aria-describedby':"regNoHelpText"} ) }}
+                                </label>
+                                {% for message in form.regnumber.errors %}
+                                <p class="help-text" id="regNoHelpText">{{ message }}</p>
+                                {% endfor %}-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="input-group">
+                                <label>First Name:
+                                    <input name="firstname" type="text" placeholder="First Name" aria-describedby="firstNameHelpText">
+                                </label>
+                                <p class="help-text" id="firstNameHelpText"></p>
+                                <!--<label>First Name:
+                                    {{ form.firstname( class_="", **{'aria-describedby':"firstNameHelpText"} ) }}
+                                </label>
+                                {% for message in form.firstname.errors %}
+                                <p class="help-text" id="firstNameHelpText">{{ message }}</p>
+                                {% endfor %}-->
+                            </div>
+
+                            <div class="input-group">
+                                <label>Middle Name:
+                                    <input name="middlename" type="text" placeholder="Middle Name" aria-describedby="middleNameHelpText">
+                                </label>
+                                <p class="help-text" id="middleNameHelpText"></p>
+                                <!--<label>Middle Name:
+                                    {{ form.middlename( class_="", **{'aria-describedby':"middleNameHelpText"} ) }}
+                                </label>
+                                {% for message in form.middlename.errors %}
+                                <p class="help-text" id="middleNameHelpText">{{ message }}</p>
+                                {% endfor %}-->
+                            </div>
+
+                            <div class="input-group">
+                                <label>Last Name:
+                                    <input name="lastname" type="text" placeholder="Last Name" aria-describedby="lastNameHelpText">
+                                </label>
+                                <p class="help-text" id="lastNameHelpText"></p>
+                                <!--<label>Last Name:
+                                    {{ form.lastname( class_="", **{'aria-describedby':"lastNameHelpText"} ) }}
+                                </label>
+                                {% for message in form.lastname.errors %}
+                                <p class="help-text" id="lastNameHelpText">{{ message }}</p>
+                                {% endfor %}-->
+                            </div>
+
+                            <div class="input-group">
+                                <fieldset class="">
+                                    <input type="radio" name="gender" value="Male" id="male" style="margin-right:5px">Male
+                                    <input type="radio" name="gender" value="Female" id="female" style="margin-right:5px; margin-left:50px;"> Female
+                                </fieldset>
+                                <p class="help-text" id="genderHelpText"></p>
+                                <!--<label style="margin-bottom: 5px">Gender:</label>
+                                    {% for subfield in form.gender %}
+                                        {{ subfield }} {{ subfield.label }}
+                                    {% endfor %}
+                                {% for message in form.gender.errors %}
+                                <p class="help-text" id="genderHelpText">{{ message }}</p>
+                                {% endfor %}-->
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="input-group">
+                                <label>Class / Form:
+                                    <select name="adm_class">
+                                    {% for form in forms %}
+                                        <option value="{{form[0]}}">{{ form[1] }}</option>
+                                    {% endfor %}
+                                    </select>
+                                </label>
+                                <p class="help-text" id="formHelpText"></p>
+                            </div>
+
+                            <div class="input-group">
+                                <label>Stream:
+                                    <select name="stream">
+                                        <option value="A">Block A</option>
+                                        <option value="B">Block B</option>
+                                        <option value="C">Block C</option>
+                                    </select>
+                                </label>
+                                <p class="help-text" id="streamHelpText"></p>
+                            </div>
+
+                            <div class="input-group">
+                                <label>Admission Marks:
+                                    <input name="marks" type="text" placeholder="Last Name" aria-describedby="lastNameHelpText">
+                                </label>
+                                <p class="help-text" id="marksHelpText"></p>
+                                <!--<label>Admission Marks:
+                                    {{ form.marks( class_="validate", **{'aria-describedby':"marksHelpText"} ) }}
+                                </label>
+                                {% for message in form.marks.errors %}
+                                <p class="help-text" id="marksHelpText">{{ message }}</p>
+                                {% endfor %}-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-footer">
+                        <div class="col-12">
+                            <button type="submit" class="success button">Save Details</button>
+                            <button type="reset" class="alert button">Clear Details</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
