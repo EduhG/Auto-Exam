@@ -20,6 +20,14 @@ def get_forms():
     return forms_list
 
 
+def get_students():
+    student_list = []
+    for student in db.session.query(Student).all():
+        student_list.append((student.uid, student.regnumber, student.firstname, student.middlename, student.lastname,
+                             student.form, student.stream))
+    return student_list
+
+
 @autoExam_blueprint.route('/autoexam')
 def index():
     return render_template('autoExam/index.html')
@@ -80,6 +88,11 @@ def addstudent():
     #
     # elif request.method == 'GET':
     return render_template('autoExam/newstudent.html', form=form, forms=get_forms())
+
+
+@autoExam_blueprint.route('/autoexam/listStudents')
+def list_students():
+    return render_template('autoExam/liststudents.html', students=get_students())
 
 
 @autoExam_blueprint.route('/autoexam/enterMarks')
