@@ -18,3 +18,34 @@ $menu.on('click', function () {
         $subMenu.add($subMenuItem).velocity('reverse');
     }
 });
+
+$(document).ready(function () {
+    $("#marks_search_id").keyup(function(){
+        var search_id = $('#marks_search_id').val();
+        console.log(search_id)
+
+        $.ajax({
+            url: "/autoexam/search_student",
+            method: "GET",
+            dataType: 'json',
+            data: {
+                student_id: search_id
+            },
+            success: function(data) {
+                console.log(data);
+                if(data.length >= 1){
+                    var fullname = data[0]['fullname']
+
+                    $('#marks_full_name').val(fullname)
+                } else {
+                    $('#marks_full_name').val("")
+                }
+
+            },
+            error: function(data) {
+                console.log(data);
+                $('#marks_full_name').val("")
+            }
+        });
+    });
+});

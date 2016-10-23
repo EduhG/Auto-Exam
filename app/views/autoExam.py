@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, session
+from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 from forms import NewStudentForm, Marks, SubjectsForm, ClassesForm
 from app.models import Subjects, Forms, Student
 from app import db
@@ -26,6 +26,29 @@ def get_students():
         student_list.append((student.uid, student.regnumber, student.firstname, student.middlename, student.lastname,
                              student.form, student.stream))
     return student_list
+
+
+@autoExam_blueprint.route('/autoexam/search_student')
+def reported_cases_search():
+    search_results = []
+
+    student_id = request.args.get('student_id')
+    print student_id
+
+    for student in db.session.query(Student).filter(Student.regnumber.like('%'+student_id+'%')).all():
+        student_details = {
+            'regnumber': student.regnumber,
+            'fullname': str(student.firstname) + " " + str(student.middlename) + " " + str(student.lastname),
+            'form': student.form,
+            'stream': student.stream
+        }
+
+        search_results.append(student_details)
+        print search_results
+
+    response = jsonify(search_results)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
 @autoExam_blueprint.route('/autoexam')
