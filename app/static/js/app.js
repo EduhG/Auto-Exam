@@ -70,13 +70,32 @@ $(document).ready(function () {
                 if(data.length > 0){
                     $('#marks_tbl_body').html(data);
                 } else {
-                    $( "#marks_tbl_body" ).html(data);
+                    $( "#marks_tbl_body" ).html('');
                 }
             },
             error: function(data) {
+                $( "#marks_tbl_body" ).html('');
                 console.log(data);
             }
         });
+        return false
+    });
+
+    var table = $('#marksTable');
+
+    $('#marksTable .customerIDCell').each(function()
+    {
+      alert($(this).html());
+    });
+
+    $('#marksTable tbody').on( 'keyup', 'td', function () {
+        //console.log( table.cell( this ).data() );
+        console.log($(this).html())
+    } );
+
+    $(".marks").keyup(function(){
+        //var marks =
+        console.log()
         return false
     });
 });
