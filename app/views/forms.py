@@ -102,9 +102,9 @@ class NewStudentForm(Form):
                         choices=[('Male', 'Male'), ('Female', 'Female')])
     regdate = StringField("Reg Date", [validators.InputRequired("Please enter your first name.")])
     regnumber = StringField("Reg Number", [validators.InputRequired("Please enter your first name.")])
-    stream = SelectField('Stream', choices=[('', 'Choose Stream')])
-    adm_class = SelectField('Form', choices=[('', 'Choose Form')])
-    marks = PasswordField('Adm Marks', [validators.DataRequired("Please enter a password.")])
+    stream = SelectField('Stream', [validators.Length(2, 60, "Choose Stream")], choices=[('', 'Choose Stream')])
+    adm_class = SelectField('Form', [validators.Length(2, 60, "Choose Form")], choices=[('', 'Choose Form')])
+    marks = PasswordField('Adm Marks', [validators.InputRequired("Please enter a password.")])
 
     submit = SubmitField("Save Details")
 
