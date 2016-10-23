@@ -64,16 +64,16 @@ class Marks(db.Model):
     grade = db.Column(db.String(100))
 
     def __init__(self, regnumber, fullname, term, year, form, merit, subject, score, code, grade):
-        self.regnumber = regnumber.title()
-        self.fullname = fullname.title()
-        self.term = term.title()
-        self.year = year.title()
-        self.form = form.title()
-        self.merit = merit.title()
-        self.subject = subject.title()
+        self.regnumber = regnumber
+        self.fullname = fullname
+        self.term = term
+        self.year = year
+        self.form = form
+        self.merit = merit
+        self.subject = subject
         self.score = score
-        self.code = code.title()
-        self.grade = grade.title()
+        self.code = code
+        self.grade = grade
 
 
 class Forms(db.Model):

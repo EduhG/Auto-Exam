@@ -66,6 +66,7 @@ $(document).ready(function () {
                 form: form
             },
             success: function(data) {
+                console.log('obtained data' + data)
                 if(data.length > 0){
                     $('#marks_tbl_body').html(data);
                 } else {
@@ -76,5 +77,6 @@ $(document).ready(function () {
                 console.log(data);
             }
         });
+        return false
     });
 });

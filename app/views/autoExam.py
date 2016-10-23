@@ -56,29 +56,36 @@ def search_marks():
     search_results = []
 
     regnumber = request.args.get('student_id')
+    fullname = request.args.get('fullname')
     term = request.args.get('term')
     year = request.args.get('year')
     form = request.args.get('form')
+    merit = ''
+    score = 0
+    grade = ''
 
     student_marks = db.session.query(Marks).filter_by(regnumber=regnumber)\
         .filter_by(term=term).filter_by(year=year).filter_by(form=form).all()
 
     if student_marks:
-        for marks in db.session.query(Marks).filter_by(regnumber=regnumber) \
-                .filter_by(term=term).filter_by(year=year).filter_by(form=form).all():
-
-            found = {'subject': marks.subject, 'score': marks.score, 'code': marks.code, 'grade': marks.grade}
-
-            search_results.append(found)
+        pass
     else:
-        print 'not found'
+        if regnumber == '' or fullname == '' or term == '' or year == '' or form == '':
+            return redirect(url_for('autoExam.addstudent'))
 
-    # for marks in db.session.query(Marks).filter_by(regnumber=regnumber)\
-    #         .filter_by(term=term).filter_by(year=year).filter_by(form=form).all():
-    #
-    #     found = {'subject': marks.subject, 'score': marks.score, 'code': marks.code, 'grade': marks.grade}
-    #
-    #     search_results.append(found)
+        for subject in db.session.query(Subjects).all():
+            new_marks = Marks(regnumber, fullname, term, year, form, merit, subject.name, score, subject.code, grade)
+            db.session.add(new_marks)
+
+        db.session.commit()
+
+    for marks in db.session.query(Marks).filter_by(regnumber=regnumber) \
+            .filter_by(term=term).filter_by(year=year).filter_by(form=form).all():
+        found = {'subject': marks.subject, 'score': marks.score, 'code': marks.code, 'grade': marks.grade}
+
+        search_results.append(found)
+
+    print search_results
 
     return render_template('autoExam/enterMarksSearch.html', search_results=search_results)
 
