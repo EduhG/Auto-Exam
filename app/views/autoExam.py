@@ -316,7 +316,7 @@ def subjects():
 
 
 @autoExam_blueprint.route('/autoExam/subject_performance_chart')
-def total_reported_cases_annually():
+def subject_performance_chart():
     ranked_subjects = rank_subjects()
 
     subject_marks = []
@@ -331,3 +331,49 @@ def total_reported_cases_annually():
     response = jsonify(subject_marks)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
+
+
+@autoExam_blueprint.route('/autoExam/annual_performance_chart')
+def annual_performance_chart():
+    annual_performance = []
+
+    terms = ['Term 1', 'Term 2', 'Term 3']
+
+    for term in terms:
+        termly = {'annual_term': term, 'annual_subjects': total_subjects_termly(term, '2016', 'F1')}
+        annual_performance.append(termly)
+
+    print annual_performance
+
+    response = jsonify(annual_performance)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+
+def total_subjects_termly(term, year, form):
+    qry = db.session.query(func.sum(Marks.score).label("total_score"), Marks.code)\
+        .filter_by(term=term).filter_by(year=year).filter_by(form=form)
+    qry = qry.group_by(Marks.code)
+    qry_result = []
+    new_dict = {}
+    for _res in qry.all():
+        sub_total = {_res[1]: _res[0]}
+        qry_result.append(sub_total)
+    for row in qry_result:
+        for key, value in row.iteritems():
+            new_dict[key] = value
+            print key, value
+    print 'printed dict', new_dict
+
+    rank_results = []
+    for x in new_dict:
+        new_rank = {'code': x, 'marks': new_dict[x]}
+        rank_results.append(new_rank)
+
+    # rank_results = []
+    # no = 1
+    # for subject in sorted(new_dict.items(), key=lambda x: (-x[1], x[0])):
+    #     new_rank = {'rank': no, 'code': subject[0], 'marks': subject[1]}
+    #     no += 1
+    #     rank_results.append(new_rank)
+    return rank_results

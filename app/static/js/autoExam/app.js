@@ -24,7 +24,7 @@ var randomColor = function(opacity) {
     return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',' + (opacity || '.3') + ')';
 };
 
-var config = {
+/*var config = {
     type: 'line',
     data: {
         labels: ["Maths", "English", "Kiswahili", "Science", "Social Studies"],
@@ -81,7 +81,7 @@ $.each(config.data.datasets, function(i, dataset) {
     dataset.pointBorderColor = background;
     dataset.pointBackgroundColor = background;
     dataset.pointBorderWidth = 1;
-});
+});*/
 
 window.onload = function() {
 
@@ -108,8 +108,8 @@ var randomScalingFactor1 = function() {
 
     };*/
     window.onload = function() {
-        var ctx = document.getElementById("buyers").getContext("2d");
-        window.myLine = new Chart(ctx, config);
+        /*var ctx = document.getElementById("buyers").getContext("2d");
+        window.myLine = new Chart(ctx, config);*/
 
         /*var termly = document.getElementById("termly").getContext("2d");
         window.myBar = Chart.Bar(termly, {
@@ -138,6 +138,107 @@ var randomScalingFactor1 = function() {
         });*/
     };
 
+    /*************************************************************************
+     * Summary of Cases Chart
+    *************************************************************************/
+
+    $.ajax({
+        url: "/autoExam/annual_performance_chart",
+        method: "GET",
+        success: function(data) {
+            var annual_terms = [];
+
+            var term1_scores = [];
+            var term2_scores = [];
+            var term3_scores = [];
+
+            for(var i in data) {
+                annual_terms.push(data[i].annual_term);
+
+                if (data[i].annual_term === 'Term 1') {
+                    for(var x in data[i].annual_subjects) {
+                        term1_scores.push(data[i].annual_subjects[x].marks);
+                    }
+                } else if (data[i].annual_term === 'Term 2') {
+                    for(var x in data[i].annual_subjects) {
+                        term2_scores.push(data[i].annual_subjects[x].marks);
+                    }
+                } else if (data[i].annual_term === 'Term 3') {
+                    for(var x in data[i].annual_subjects) {
+                        term3_scores.push(data[i].annual_subjects[x].marks);
+                    }
+                } else {
+
+                }
+            }
+
+            var config = {
+                type: 'line',
+                data: {
+                    labels: ["Maths", "English", "Kiswahili", "Science", "Social Studies"],
+                    datasets: [{
+                        label: "First Term",
+                        data: term1_scores,//[80, 65, 70, 80, 76],
+                        fill: false,
+                        borderDash: [5, 5],
+                    }, {
+                        label: "Second Term",
+                        data: term2_scores,//[74, 75, 80, 70, 86],
+                        fill: false,
+                        borderDash: [5, 5],
+                    }, {
+                        label: "Third Term",
+                        data: term3_scores,//[90, 80, 50, 73, 69],
+                        fill: false,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'bottom',
+                    },
+                    hover: {
+                        mode: 'label'
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true
+                            }
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Marks'
+                            }
+                        }]
+                    },
+                    title: {
+                        display: false,
+                        text: 'Chart.js Line Chart - Legend'
+                    }
+                }
+            };
+
+            $.each(config.data.datasets, function(i, dataset) {
+                var background = randomColor(0.5);
+                dataset.borderColor = background;
+                dataset.backgroundColor = background;
+                dataset.pointBorderColor = background;
+                dataset.pointBackgroundColor = background;
+                dataset.pointBorderWidth = 1;
+            });
+
+            var ctx = document.getElementById("buyers").getContext("2d");
+            window.myLine = new Chart(ctx, config);
+        },
+        error: function(data) {
+            console.log(data);
+        }
+    });
+
 
     /*************************************************************************
      * Summary of Cases Chart
@@ -147,7 +248,6 @@ var randomScalingFactor1 = function() {
         url: "/autoExam/subject_performance_chart",
         method: "GET",
         success: function(data) {
-            console.log(data);
             var subjects = [];
             var scores = [];
 
