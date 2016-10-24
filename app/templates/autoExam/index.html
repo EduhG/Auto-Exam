@@ -67,21 +67,17 @@
                     <table>
                         <thead>
                             <th>Rank</th>
-                            <th>Class</th>
+                            <th>Code</th>
+                            <th>Score</th>
                         </thead>
                         <tbody>
+                            {% for subject in rank_subjects %}
                             <tr>
-                                <td>1</td>
-                                <td>Form 2</td>
+                                <td>{{ subject.rank }}</td>
+                                <td>{{ subject.code }}</td>
+                                <td>{{ subject.marks }}</td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Form 4</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Form 3</td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

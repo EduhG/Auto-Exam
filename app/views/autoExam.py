@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, jsonif
 from forms import NewStudentForm, Marks, SubjectsForm, ClassesForm
 from app.models import Subjects, Forms, Student
 from sqlalchemy import func
+import operator
 from app import db
 import ast
 
@@ -34,14 +35,23 @@ def rank_subjects():
     qry = db.session.query(func.sum(Marks.score).label("total_score"), Marks.code).filter_by(term='Term 1').filter_by(year='2016').filter_by(form='F1')
     qry = qry.group_by(Marks.code)
     qry_result = []
+    new_dict = {}
     for _res in qry.all():
         sub_total = {_res[1]: _res[0]}
         qry_result.append(sub_total)
-        print _res[1]
     for row in qry_result:
         for key, value in row.iteritems():
+            new_dict[key] = value
             print key, value
-    print qry_result
+    print new_dict
+
+    rank_results = []
+    no = 1
+    for subject in sorted(new_dict.items(), key=lambda x: (-x[1], x[0])):
+        new_rank = {'rank': no, 'code': subject[0], 'marks': subject[1]}
+        no += 1
+        rank_results.append(new_rank)
+    return rank_results
 
 
 @autoExam_blueprint.route('/autoexam/search_student')
