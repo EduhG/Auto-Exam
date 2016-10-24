@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, jsonif
 from forms import NewStudentForm, Marks, SubjectsForm, ClassesForm
 from app.models import Subjects, Forms, Student
 from app import db
+import ast
 
 autoExam_blueprint = Blueprint('autoExam', __name__)
 
@@ -55,7 +56,7 @@ def reported_cases_search():
 def search_marks():
     search_results = []
 
-    regnumber = request.args.get('student_id')
+    regnumber = request.args.get('student_id').replace(" ", "")
     fullname = request.args.get('fullname')
     term = request.args.get('term')
     year = request.args.get('year')
@@ -88,6 +89,36 @@ def search_marks():
     # print search_results
 
     return render_template('autoExam/enterMarksSearch.html', search_results=search_results)
+
+
+@autoExam_blueprint.route('/autoExam/save_marks_data', methods=['GET', 'POST'])
+def save_marks_data():
+    new_dict = dict(request.form)
+
+    regnumber = new_dict['student_id'][0]
+    term = new_dict['term'][0]
+    year = new_dict['year'][0]
+    form = new_dict['form'][0]
+    table_data = new_dict['table_data']
+
+    new_dd = tuple(table_data)[0]
+    my_dictt = ast.literal_eval(new_dd.replace('[', '').replace(']', ''))
+
+    for my_ in my_dictt:
+        marks = Marks.query.filter_by(regnumber=regnumber)\
+            .filter_by(term=term)\
+            .filter_by(year=year)\
+            .filter_by(form=form) \
+            .filter_by(code=my_['Code']) \
+            .update(dict(score=int(my_['Marks']), grade=str(my_['Grade'])))
+
+        print marks
+
+        db.session.commit()
+
+    response = jsonify([])
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
 @autoExam_blueprint.route('/autoexam')

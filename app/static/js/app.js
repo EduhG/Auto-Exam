@@ -128,11 +128,39 @@ $(document).ready(function () {
 
         return false
     });
+
     function convertTAbleToJson() {
         var table = $('#marksTable').tableToJSON();
         var table_data = JSON.stringify(table);
-        
-        //alert(JSON.stringify(table));
+
+        var student_id = $('#marks_search_id').val();
+        var term = $('#term').val();
+        var year = $('#year').val();
+        var form = $('#form').val();
+
+        my_data = {
+            student_id: student_id,
+            term: term,
+            year: year,
+            form: form,
+            table_data: JSON.stringify(table)
+        };
+
+        console.log(my_data)
+
+        $.ajax({
+            url: '/autoExam/save_marks_data',
+            dataType: 'html',
+            type: 'post',
+            data: my_data,
+            success: function( data){
+                alert('Records saved successfully');
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
     }
 
 });
+
