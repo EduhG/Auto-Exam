@@ -86,8 +86,6 @@ def search_marks():
 
         search_results.append(found)
 
-    # print search_results
-
     return render_template('autoExam/enterMarksSearch.html', search_results=search_results)
 
 
