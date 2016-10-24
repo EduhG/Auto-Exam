@@ -152,8 +152,14 @@ var randomScalingFactor1 = function() {
             var term2_scores = [];
             var term3_scores = [];
 
+            var term_subjects = [];
+
             for(var i in data) {
                 annual_terms.push(data[i].annual_term);
+
+                for(var x in data[i].annual_subjects) {
+                    term_subjects.push(data[i].annual_subjects[x].code);
+                }
 
                 if (data[i].annual_term === 'Term 1') {
                     for(var x in data[i].annual_subjects) {
@@ -175,7 +181,7 @@ var randomScalingFactor1 = function() {
             var config = {
                 type: 'line',
                 data: {
-                    labels: ["Maths", "English", "Kiswahili", "Science", "Social Studies"],
+                    labels: term_subjects,//["Maths", "English", "Kiswahili", "Science", "Social Studies"],
                     datasets: [{
                         label: "First Term",
                         data: term1_scores,//[80, 65, 70, 80, 76],
@@ -212,6 +218,9 @@ var randomScalingFactor1 = function() {
                             scaleLabel: {
                                 display: true,
                                 labelString: 'Marks'
+                            },
+                            ticks: {
+                                beginAtZero: false
                             }
                         }]
                     },

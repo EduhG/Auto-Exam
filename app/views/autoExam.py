@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, jsonif
 from forms import NewStudentForm, Marks, SubjectsForm, ClassesForm
 from app.models import Subjects, Forms, Student
 from sqlalchemy import func
+import collections
 import operator
 from app import db
 import ast
@@ -146,6 +147,21 @@ def search_marks():
         .filter_by(term=term).filter_by(year=year).filter_by(form=form).all()
 
     if student_marks:
+        for subject in db.session.query(Subjects).all():
+            new_student_marks = db.session.query(Marks).filter_by(regnumber=regnumber)\
+                .filter_by(term=term).filter_by(year=year).filter_by(form=form).filter_by(code=subject.code).all()
+
+            if new_student_marks:
+                pass
+            else:
+                if regnumber == '' or fullname == '' or term == '' or year == '' or form == '':
+                    return redirect(url_for('autoExam.addstudent'))
+
+                new_marks = Marks(regnumber, fullname, term, year, form, merit, subject.name, score, subject.code,
+                                  grade)
+                db.session.add(new_marks)
+
+        db.session.commit()
         pass
     else:
         if regnumber == '' or fullname == '' or term == '' or year == '' or form == '':
@@ -366,14 +382,10 @@ def total_subjects_termly(term, year, form):
     print 'printed dict', new_dict
 
     rank_results = []
-    for x in new_dict:
+    new_subjects = collections.OrderedDict(sorted(new_dict.items()))
+
+    for x in new_subjects:
         new_rank = {'code': x, 'marks': new_dict[x]}
         rank_results.append(new_rank)
 
-    # rank_results = []
-    # no = 1
-    # for subject in sorted(new_dict.items(), key=lambda x: (-x[1], x[0])):
-    #     new_rank = {'rank': no, 'code': subject[0], 'marks': subject[1]}
-    #     no += 1
-    #     rank_results.append(new_rank)
     return rank_results
