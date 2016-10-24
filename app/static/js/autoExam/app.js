@@ -56,8 +56,7 @@ var config = {
             xAxes: [{
                 display: true,
                 scaleLabel: {
-                    display: true,
-                    labelString: 'Month'
+                    display: true
                 }
             }],
             yAxes: [{
@@ -99,7 +98,7 @@ var randomScalingFactor1 = function() {
         return 'rgba(' + randomColorFactor1() + ',' + randomColorFactor1() + ',' + randomColorFactor1() + ',.7)';
     };
 
-    var barChartData = {
+    /*var barChartData = {
         labels: ["Maths", "English", "Kiswahili", "Science", "Social Studies"],
         datasets: [{
             label: '',
@@ -107,12 +106,12 @@ var randomScalingFactor1 = function() {
             data: [80, 65, 70, 85, 76]
         }]
 
-    };
+    };*/
     window.onload = function() {
         var ctx = document.getElementById("buyers").getContext("2d");
         window.myLine = new Chart(ctx, config);
 
-        var termly = document.getElementById("termly").getContext("2d");
+        /*var termly = document.getElementById("termly").getContext("2d");
         window.myBar = Chart.Bar(termly, {
             data: barChartData,
             options: {
@@ -136,9 +135,69 @@ var randomScalingFactor1 = function() {
                     }],
                 }
             }
-        });
+        });*/
     };
 
+
+    /*************************************************************************
+     * Summary of Cases Chart
+    *************************************************************************/
+
+    $.ajax({
+        url: "/autoExam/subject_performance_chart",
+        method: "GET",
+        success: function(data) {
+            console.log(data);
+            var subjects = [];
+            var scores = [];
+
+            for(var i in data) {
+                subjects.push(data[i].subject_name);
+                scores.push(data[i].subject_marks);
+            }
+
+            var barChartData = {
+                labels: subjects,
+                datasets: [{
+                    label: '',
+                    backgroundColor: randomColor(),
+                    data: scores
+                }]
+            };
+
+            var termly = document.getElementById("termly").getContext("2d");
+            window.myBar = Chart.Bar(termly, {
+                data: barChartData,
+                options: {
+                    legend: {
+                        display: false,
+                    },
+                    responsive: true,
+                    hoverMode: 'label',
+                    hoverAnimationDuration: 400,
+                    stacked: false,
+                    title:{
+                        display:false,
+                        //text:"Chart.js Bar Chart - Multi Axis"
+                    },
+                    scales: {
+                        yAxes: [{
+                            type: "linear", // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                            display: true,
+                            position: "left",
+                            id: "y-axis-1",
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                    }
+                }
+            });
+        },
+        error: function(data) {
+            console.log(data);
+        }
+    });
 
 $('#sidenav>ul').on('click', '.submenu', function (e) {
     console.log('hey you');

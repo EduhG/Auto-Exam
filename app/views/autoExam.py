@@ -313,3 +313,21 @@ def subjects():
 
     elif request.method == 'GET':
         return render_template('autoExam/subjects.html', form=form, subjects=get_categories())
+
+
+@autoExam_blueprint.route('/autoExam/subject_performance_chart')
+def total_reported_cases_annually():
+    ranked_subjects = rank_subjects()
+
+    subject_marks = []
+
+    for subject in ranked_subjects:
+        print subject['code']
+        for subject_name in db.session.query(Subjects).filter_by(code=subject['code']).all():
+            print subject_name.name
+            details = {'subject_name': subject_name.name, 'subject_marks': subject['marks']}
+            subject_marks.append(details)
+
+    response = jsonify(subject_marks)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
