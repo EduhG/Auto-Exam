@@ -54,6 +54,29 @@ def rank_subjects():
     return rank_results
 
 
+def rank_classes():
+    qry = db.session.query(func.sum(Marks.score).label("total_score"), Marks.form).filter_by(term='Term 1').filter_by(year='2016').filter_by(form='F1')
+    qry = qry.group_by(Marks.form)
+    qry_result = []
+    new_dict = {}
+    for _res in qry.all():
+        sub_total = {_res[1]: _res[0]}
+        qry_result.append(sub_total)
+    for row in qry_result:
+        for key, value in row.iteritems():
+            new_dict[key] = value
+            print key, value
+    print new_dict
+
+    rank_results = []
+    no = 1
+    for classes in sorted(new_dict.items(), key=lambda x: (-x[1], x[0])):
+        new_rank = {'rank': no, 'form': classes[0], 'marks': classes[1]}
+        no += 1
+        rank_results.append(new_rank)
+    return rank_results
+
+
 @autoExam_blueprint.route('/autoexam/search_student')
 def reported_cases_search():
     search_results = []
@@ -146,7 +169,8 @@ def save_marks_data():
 
 @autoExam_blueprint.route('/autoexam')
 def index():
-    return render_template('autoExam/index.html', rank_subjects=rank_subjects())
+    return render_template('autoExam/index.html', rank_subjects=rank_subjects(),
+                           rank_classes=rank_classes())
 
 
 @autoExam_blueprint.route('/autoexam/addStudent', methods=['GET', 'POST'])

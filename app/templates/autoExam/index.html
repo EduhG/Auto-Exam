@@ -38,20 +38,16 @@
                         <thead>
                             <th>Rank</th>
                             <th>Class</th>
+                            <th>Score</th>
                         </thead>
                         <tbody>
+                            {% for classes in rank_classes %}
                             <tr>
-                                <td>1</td>
-                                <td>Form 2</td>
+                                <td>{{ classes.rank }}</td>
+                                <td>{{ classes.form }}</td>
+                                <td>{{ classes.marks }}</td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Form 4</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Form 3</td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
